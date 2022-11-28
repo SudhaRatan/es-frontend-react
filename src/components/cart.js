@@ -9,7 +9,11 @@ function Cart() {
     const [cart, setCart] = useState(null)
     useEffect(() => {
         axios
+<<<<<<< HEAD
             .get(process.env.API+"/cart")
+=======
+            .get("/cart")
+>>>>>>> parent of 22480f0 (wef)
             .then((res) => {
 
                 if (res.data.auth) setCart(res.data.message)

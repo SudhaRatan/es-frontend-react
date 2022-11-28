@@ -30,7 +30,11 @@ export default function Login() {
     const handleClick = (event) => {
         event.preventDefault()
         axios
+<<<<<<< HEAD
             .post(process.env.API+"/login/signup", post)
+=======
+            .post("/login/signup", post)
+>>>>>>> parent of 22480f0 (wef)
             .then((res) => {
                 if(res.data.status) {
                     navigate("/login",{
