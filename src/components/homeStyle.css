@@ -1,0 +1,31 @@
+.Home{
+    text-align: center;
+    /* background-color: aqua; */
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    margin: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    max-width: 90%;
+}
+
+.feat{
+    height:50vh;
+    background-color: blueviolet;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+.elec{
+    height: 40vh;
+    background-color: aquamarine;
+}
+.clothes{
+    height: 40vh;
+    background-color: wheat;
+}
+.toys{
+    height: 40vh;
+    background-color: #ffa334;
+}
