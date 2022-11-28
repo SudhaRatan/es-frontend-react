@@ -4,6 +4,7 @@ import axios from "axios";
 import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { API } from "../App";
 
 export default function Login() {
     axios.defaults.headers.get['x-access-token'] = localStorage.getItem('token')
@@ -31,7 +32,7 @@ export default function Login() {
     const handleClick = (event) => {
         event.preventDefault()
         axios
-            .post("/login", post)
+            .post(`${API}/login`, post)
             .then((res) => {
                 if (res.data.auth) {
                     localStorage.setItem('token', res.data.token)

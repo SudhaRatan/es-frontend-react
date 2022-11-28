@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import axios from "axios"
 import st from "./style";
 import { useNavigate } from "react-router-dom"
+import { API } from "../App";
 function Cart() {
     axios.defaults.headers.get['x-access-token'] = localStorage.getItem('token')
 
@@ -9,7 +10,7 @@ function Cart() {
     const [cart, setCart] = useState(null)
     useEffect(() => {
         axios
-            .get("/cart")
+            .get(`${API}/cart`)
             .then((res) => {
 
                 if (res.data.auth) setCart(res.data.message)

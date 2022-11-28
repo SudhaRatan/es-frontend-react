@@ -3,6 +3,7 @@ import "./style.css";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API } from "../App";
 
 export default function Login() {
 
@@ -30,7 +31,7 @@ export default function Login() {
     const handleClick = (event) => {
         event.preventDefault()
         axios
-            .post("/login/signup", post)
+            .post(`${API}/login/signup`, post)
             .then((res) => {
                 if(res.data.status) {
                     navigate("/login",{
