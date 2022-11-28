@@ -9,7 +9,7 @@ function Cart() {
     const [cart, setCart] = useState(null)
     useEffect(() => {
         axios
-            .get("https://es-demo.onrender.com/cart")
+            .get("/cart")
             .then((res) => {
 
                 if (res.data.auth) setCart(res.data.message)

@@ -31,7 +31,7 @@ export default function Login() {
     const handleClick = (event) => {
         event.preventDefault()
         axios
-            .post("https://es-demo.onrender.com/login", post)
+            .post("/login", post)
             .then((res) => {
                 if (res.data.auth) {
                     localStorage.setItem('token', res.data.token)
