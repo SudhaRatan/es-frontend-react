@@ -30,7 +30,7 @@ export default function Login() {
     const handleClick = (event) => {
         event.preventDefault()
         axios
-            .post(process.env.api+"/login/signup", post)
+            .post(process.env.API+"/login/signup", post)
             .then((res) => {
                 if(res.data.status) {
                     navigate("/login",{

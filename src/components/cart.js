@@ -9,7 +9,7 @@ function Cart() {
     const [cart, setCart] = useState(null)
     useEffect(() => {
         axios
-            .get(process.env.api+"/cart")
+            .get(process.env.API+"/cart")
             .then((res) => {
 
                 if (res.data.auth) setCart(res.data.message)
