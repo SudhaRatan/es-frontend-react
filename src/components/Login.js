@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 export default function Login() {
+    axios.defaults.headers.get['x-access-token'] = localStorage.getItem('token')
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -30,7 +31,7 @@ export default function Login() {
     const handleClick = (event) => {
         event.preventDefault()
         axios
-            .post("/login", post)
+            .post("https://es-demo.onrender.com/login", post)
             .then((res) => {
                 if (res.data.auth) {
                     localStorage.setItem('token', res.data.token)

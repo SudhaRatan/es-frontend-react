@@ -4,11 +4,12 @@ import st from "./style";
 import { useNavigate } from "react-router-dom"
 function Cart() {
     axios.defaults.headers.get['x-access-token'] = localStorage.getItem('token')
+
     const navigate = useNavigate()
     const [cart, setCart] = useState(null)
     useEffect(() => {
         axios
-            .get("/cart")
+            .get("https://es-demo.onrender.com/cart")
             .then((res) => {
 
                 if (res.data.auth) setCart(res.data.message)

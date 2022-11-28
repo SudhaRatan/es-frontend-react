@@ -30,7 +30,7 @@ export default function Login() {
     const handleClick = (event) => {
         event.preventDefault()
         axios
-            .post("/login/signup", post)
+            .post("https://es-demo.onrender.com/login/signup", post)
             .then((res) => {
                 if(res.data.status) {
                     navigate("/login",{
