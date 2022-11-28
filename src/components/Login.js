@@ -31,11 +31,7 @@ export default function Login() {
     const handleClick = (event) => {
         event.preventDefault()
         axios
-<<<<<<< HEAD
-            .post(process.env.API+"/login", post)
-=======
             .post("/login", post)
->>>>>>> parent of 22480f0 (wef)
             .then((res) => {
                 if (res.data.auth) {
                     localStorage.setItem('token', res.data.token)
