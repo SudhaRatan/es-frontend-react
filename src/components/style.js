@@ -1,30 +1,34 @@
 const st = {
     cont: {
         textAlign: "center",
+        width: "100%",
     },
     navbar: {
         cursor: "pointer",
         textAlign: "center",
         display: "grid",
         margin: "auto",
-        gridTemplateColumns: "repeat(4,minmax(20%,1fr))"
+        height:"60px",
+        gridTemplateColumns: "3fr 8fr 2fr",
+        position: "fixed",
+        width: "100%",
     }, nav: {
-        backgroundColor: "#000",
+        backgroundColor: "#202124",
         color: "#fff",
         padding: "20px 0",
     }, App: {
         textAlign: "center",
         fontSize: "40px"
     }, btn: {
-        width:"100%",
+        width: "100%",
         backgroundColor: "#666fff",
         border: "1px solid #666fff",
         padding: "10px 40px",
         color: "white",
         borderRadius: "5px",
         boxShadow: "0px 0px 10px 2px #666fff"
-    },btn1: {
-        width:"100%",
+    }, btn1: {
+        width: "100%",
         backgroundColor: "#FB641B",
         border: "1px solid #FB641B",
         padding: "10px 40px",
@@ -44,22 +48,22 @@ const st = {
         height: "280px",
         width: "300px",
         textAlign: "center",
-        display:"grid",
+        display: "grid",
         // margin:"0 0",
         boxShadow: "0px 0px 10px 2px #99999950",
-        alignItems:"center",
+        alignItems: "center",
         padding: "30px",
-        borderRadius:"10px",
-    },form1: {
+        borderRadius: "10px",
+    }, form1: {
         height: "350px",
         width: "300px",
         textAlign: "center",
-        display:"grid",
+        display: "grid",
         // margin:"0 0",
         boxShadow: "0px 0px 10px 2px #99999950",
-        alignItems:"center",
+        alignItems: "center",
         padding: "30px",
-        borderRadius:"10px",
+        borderRadius: "10px",
     }, login: {
         height: "90vh",
         textAlign: "center",
@@ -67,8 +71,6 @@ const st = {
         margin: "auto",
         // backgroundColor:"black",
         justifyContent: "center",
-    }, in: {
-        
-    }
+    },
 }
 export default st

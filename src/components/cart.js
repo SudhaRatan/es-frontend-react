@@ -12,8 +12,8 @@ function Cart() {
         axios
             .get(`${API}/cart`)
             .then((res) => {
-
-                if (res.data.auth) setCart(res.data.message)
+                try {
+                    if (res.data.auth) setCart(res.data.message)
                 else {
                     localStorage.removeItem('token')
                     navigate("/login", {
@@ -22,6 +22,11 @@ function Cart() {
                         }
                     })
                 }
+                } catch (error) {
+                    setCart("error")
+                }
+
+                
             })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [cart])

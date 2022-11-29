@@ -36,7 +36,7 @@ export default function Login() {
             .then((res) => {
                 if (res.data.auth) {
                     localStorage.setItem('token', res.data.token)
-                    navigate("/cart")
+                    navigate("/")
                     // console.log(localStorage.getItem('token'))
                 } else {
                     setAuthStat(res.data)
