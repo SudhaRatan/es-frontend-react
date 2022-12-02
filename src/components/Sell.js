@@ -17,7 +17,7 @@ function Sell() {
             .get(`${API}/sell/products`)
             .then((res) => {
                 try {
-                    if (res.data.auth) setAuth(res.data.auth)
+                    if (res.data.auth) setAuth(res.data.message)
                     else {
                         localStorage.removeItem('token')
                         navigate("/login", {
