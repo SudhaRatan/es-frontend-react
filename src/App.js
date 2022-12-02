@@ -10,7 +10,9 @@ function App() {
   return (
 
     <div className="Home">
-      <div className="feat" onClick={()=>navigate("/product")}>Featuring section</div>
+      <div className="feat" onClick={() => navigate("/product")}>
+        Featuring section
+      </div>
       <div className="elec"></div>
       <div className="clothes"></div>
       <div className="toys"></div>

@@ -3,6 +3,10 @@ import axios from "axios"
 import st from "./style";
 import { useNavigate } from "react-router-dom"
 import { API } from "../App";
+import Loading from "./loadingAnim";
+
+
+
 function Cart() {
     axios.defaults.headers.get['x-access-token'] = localStorage.getItem('token')
 
@@ -14,35 +18,37 @@ function Cart() {
             .then((res) => {
                 try {
                     if (res.data.auth) setCart(res.data.message)
-                else {
-                    localStorage.removeItem('token')
-                    navigate("/login", {
-                        state: {
-                            msg: "Login to continue"
-                        }
-                    })
-                }
+                    else {
+                        localStorage.removeItem('token')
+                        navigate("/login", {
+                            state: {
+                                msg: "Login to continue"
+                            }
+                        })
+                    }
                 } catch (error) {
                     setCart("error")
                 }
 
-                
+
             })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [cart])
 
-    const handleCLick = async () => {
-        await localStorage.removeItem('token')
-        setCart(null)
-        // navigate("/")
-    }
 
 
 
     return (
         <div style={st.App}>
-            {cart}
-            <button onClick={handleCLick}>Logout</button>
+            {
+                cart ? (
+                    <div>
+                        {cart}
+                    </div>
+
+                ) : <Loading />
+            }
+
         </div>
     )
 }
