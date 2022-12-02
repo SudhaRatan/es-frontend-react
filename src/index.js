@@ -10,6 +10,7 @@ import Signup from './components/Signup'
 import st from './components/style';
 import Admin from './components/admin';
 import Product from './components/product';
+import Sell from "./components/Sell.js";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -24,6 +25,7 @@ root.render(
         <Route path='/cart' element={<Cart />} />
         <Route path='/secret' element={<Admin />} />
         <Route path='/product' element={<Product />} />
+        <Route path='/sell' element={<Sell />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

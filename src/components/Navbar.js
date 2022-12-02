@@ -72,6 +72,7 @@ function Navb() {
                             <li onClick={()=>{setShowModal(false);navigate("/");}} className="nav-link">Home</li>
                             <li onClick={()=>{setShowModal(false);navigate("/orders");}} className="nav-link">Orders</li>
                             <li onClick={()=>{setShowModal(false);navigate("/cart");}} className="nav-link">Cart</li>
+                            <li onClick={()=>{setShowModal(false);navigate("/sell");}} className="nav-link">Sell</li>
                             <li onClick={()=>{setShowModal(false);navigate("/account");}} className="nav-link">Account</li>
                             {
                                 localStorage.getItem('token') ? (
