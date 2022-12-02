@@ -1,23 +1,23 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
-import st from "./style";
+import st from "../style";
 import { useNavigate } from "react-router-dom"
-import { API } from "../App";
-import Loading from "./loadingAnim";
+import { API } from "../../App";
+import Loading from "../loadingAnim";
 
 
 
-function Sell() {
+function Cart() {
     axios.defaults.headers.get['x-access-token'] = localStorage.getItem('token')
 
     const navigate = useNavigate()
-    const [auth, setAuth] = useState(null)
+    const [cart, setCart] = useState(null)
     useEffect(() => {
         axios
-            .get(`${API}/sell/products`)
+            .get(`${API}/cart`)
             .then((res) => {
                 try {
-                    if (res.data.auth) setAuth(res.data.message)
+                    if (res.data.auth) setCart(res.data.message)
                     else {
                         localStorage.removeItem('token')
                         navigate("/login", {
@@ -27,13 +27,13 @@ function Sell() {
                         })
                     }
                 } catch (error) {
-                    setAuth("error")
+                    setCart("error")
                 }
 
 
             })
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [auth])
+    }, [cart])
 
 
 
@@ -41,9 +41,9 @@ function Sell() {
     return (
         <div style={st.App}>
             {
-                auth ? (
+                cart ? (
                     <div>
-                        {auth}
+                        {cart}
                     </div>
 
                 ) : <Loading />
@@ -54,4 +54,4 @@ function Sell() {
 }
 
 
-export default Sell
+export default Cart

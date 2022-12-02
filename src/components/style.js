@@ -36,17 +36,17 @@ const st = {
         borderRadius: "5px",
         boxShadow: "0px 0px 10px 2px #FB641B"
     }, inp: {
-        height: "30px",
+        height: "40px",
         padding: " 5px 10px",
-        width: "90%",
+        width: "100%",
         fontSize: "20px",
-        borderRadius: "8px",
+        borderRadius: "5px",
         marginBottom: "20px",
         // border:"none",
         border: "1px solid #999999"
     }, form: {
-        height: "280px",
-        width: "300px",
+        height: "300px",
+        width: "400px",
         textAlign: "center",
         display: "grid",
         // margin:"0 0",

@@ -2,11 +2,12 @@
     box-sizing: border-box;
 }
 
-.container {
+.container1 {
     width: 100vw;
     /* height: 70vh; */
     display: grid;
     grid-template-columns: 4fr 3fr;
+    grid-template-rows: 1fr;
     /* background-color: aqua; */
     gap: 1%;
     padding: 2%;
@@ -92,7 +93,7 @@
 }
 
 @media (max-width:900px) {
-    .container {
+    .container1 {
         grid-template-columns: 1fr;
     }
     .buy{

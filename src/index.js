@@ -5,12 +5,12 @@ import App from './App';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './components/Login';
 import Navb from './components/Navbar';
-import Cart from './components/cart';
+import Cart from './components/user/cart';
 import Signup from './components/Signup'
 import st from './components/style';
 import Admin from './components/admin';
 import Product from './components/product';
-import Sell from "./components/Sell.js";
+import Sell from "./components/seller/Sell.js";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

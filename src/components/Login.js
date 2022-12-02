@@ -26,6 +26,7 @@ export default function Login() {
                 [name]: value,
             }
         })
+        
 
     }
 
@@ -58,7 +59,7 @@ export default function Login() {
 
     return (
         <div>
-            <h1 style={{ textAlign: "center" }}>Sign in</h1>
+            <h1 style={{ textAlign: "center",margin:"20px", }}>Sign in</h1>
             <div style={st.login}>
                 <div style={st.form}>
                     {

@@ -7,6 +7,7 @@ import pic4 from "../images/pic4.jpg"
 import "./styles/productstyle.css"
 import RArrow from "../images/LArrow.png"
 import LArrow from "../images/RArrow.png"
+import Button from "./button"
 
 export default function Product() {
 
@@ -22,25 +23,9 @@ export default function Product() {
         else setCount(count - 1)
     }
 
-    const Button = (props) => {
-        return (
-            <button style={{
-                border: "none",
-                borderRadius: "10px",
-                padding: "10px",
-                width: "30%",
-                boxSizing: "border-box",
-                margin: "0px 20px",
-                backgroundColor: `${props.color}`,
-                boxShadow: `0px 0px 8px 1px ${props.color}90`
-            }}>{props.title}</button>
-
-        )
-    }
-
     return (
         <div className="cont">
-            <div className="container">
+            <div className="container1">
                 <div>
                     <div className="img">
                         <div onClick={dec} className="arrow"><img src={LArrow} alt="img" /></div>
@@ -68,8 +53,8 @@ export default function Product() {
             </div>
             <div className="buy">
                 <div className="btngrp">
-                    <Button color='#FB641B' title="Add to cart" />
-                    <Button color='#666fff' title="Buy now" />
+                    <Button color='#FB641B' margin="0px 20px" width='30%' title="Add to cart" />
+                    <Button color='#666fff' margin="0px 20px" width='30%' title="Buy now" />
                 </div>
             </div>
         </div>
