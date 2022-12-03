@@ -20,7 +20,10 @@ function Sell() {
             .get(`${API}/sell/upload`)
             .then((res) => {
                 try {
-                    if (res.data.auth) setAuth(res.data.message)
+                    console.log(res.data)
+                    if (res.data.auth) {
+                        setAuth(res.data.message)
+                    }
                     else {
                         localStorage.removeItem('token')
                         navigate("/login", {
@@ -71,7 +74,7 @@ function Sell() {
                 const res = await reader.result.toString()
                 temp.push(res)
                 setResults(temp)
-                // console.log(res)
+                
             }
             reader.readAsDataURL(files[i])
         }
@@ -84,6 +87,8 @@ function Sell() {
             .post(`${API}/sell/upload`, {post,results})
             .then(res => {
                 console.log(res.data)
+                // console.log(results)
+                navigate("/products")
             })
     }
 
@@ -130,7 +135,7 @@ function Sell() {
                                 {
                                     Object.keys(currency).map((curr) => {
                                         return (
-                                            <option key={curr} value={curr}>{currency[curr].name}({curr})-{currency[curr].symbol}</option>
+                                            <option key={curr} value={currency[curr].symbol}>{currency[curr].name}({curr})-{currency[curr].symbol}</option>
                                         )
                                     })
                                 }

@@ -1,17 +1,23 @@
-import { useState } from "react"
-import img from "../images/img.jpg"
-import pic1 from "../images/pic1.jpg"
-import pic2 from "../images/pic2.jpg"
-import pic3 from "../images/pic3.jpg"
-import pic4 from "../images/pic4.jpg"
+import { useEffect, useState } from "react"
 import "./styles/productstyle.css"
 import RArrow from "../images/LArrow.png"
 import LArrow from "../images/RArrow.png"
 import Button from "./button"
+import { useParams, useNavigate } from "react-router-dom"
+import axios from "axios"
+import { API } from "../App"
+import Loading from "./loadingAnim"
 
 export default function Product() {
+    axios.defaults.headers.get['x-access-token'] = localStorage.getItem('token')
+    axios.defaults.headers.post['x-access-token'] = localStorage.getItem('token')
 
-    const imgArray = [img, pic1, pic2, pic3, pic4]
+    const navigate = useNavigate()
+    const [auth, setAuth] = useState(null)
+    const [prod, setProd] = useState(null)
+    const { id } = useParams()
+
+    const [imgArray, setImageArray] = useState(null)
 
     const [count, setCount] = useState(0)
 
@@ -23,40 +29,71 @@ export default function Product() {
         else setCount(count - 1)
     }
 
-    return (
-        <div className="cont">
-            <div className="container1">
-                <div>
-                    <div className="img">
-                        <div onClick={dec} className="arrow"><img src={LArrow} alt="img" /></div>
-                        <div className="img-child"><img alt="img" className="imgg" src={imgArray[count]} /></div>
-                        <div onClick={inc} className="arrow"><img alt="img" src={RArrow} /></div>
-                    </div>
-                    <div style={{ textAlign: "center", width: "100%" }}>{count + 1}/{imgArray.length}</div>
-                </div>
-                <div className="attr">
-                    <div className="name">Nokia 105 Single SIM, Keypad Mobile Phone with Wireless FM Radio | Blue</div>
-                    <div className="rating">Rating</div>
-                    <div className="price">$1299</div>
-                    <div className="desc">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum praesentium fugit quam iusto expedita doloribus non ut? Aut velit molestiae a inventore possimus omnis sed dolorum laboriosam? Tempora, sapiente cumque.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum praesentium fugit quam iusto expedita doloribus non ut? Aut velit molestiae a inventore possimus omnis sed dolorum laboriosam? Tempora, sapiente cumque.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum praesentium fugit quam iusto expedita doloribus non ut? Aut velit molestiae a inventore possimus omnis sed dolorum laboriosam? Tempora, sapiente cumque.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum praesentium fugit quam iusto expedita doloribus non ut? Aut velit molestiae a inventore possimus omnis sed dolorum laboriosam? Tempora, sapiente cumque.
-                    </div>
-                </div>
+    useEffect(() => {
+        axios
+            .get(`${API}/sell/product/${id}`)
+            .then(res => {
+                try {
+                    // console.log(res.data)
+                    if (res.data.auth) {
+                        setAuth(res.data.message)
+                        setImageArray(res.data.imgArray.imageData)
+                        setProd(res.data.prod)
+                    }
+                    else {
+                        localStorage.removeItem('token')
+                        navigate("/login", {
+                            state: {
+                                msg: "Login to continue"
+                            }
+                        })
+                    }
+                } catch (error) {
+                    setAuth("error")
+                    console.log(error)
+                }
+            })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
-                <div>
-                    <h1>Reviews</h1>
-                </div>
-                <div style={{ height: "80px" }}></div>
-            </div>
-            <div className="buy">
-                <div className="btngrp">
-                    <Button color='#FB641B' margin="0px 20px" width='30%' title="Add to cart" />
-                    <Button color='#666fff' margin="0px 20px" width='30%' title="Buy now" />
-                </div>
-            </div>
-        </div>
+    return (
+        <>
+            {
+                auth ? (
+                    <div className="cont">
+                        <div className="container1">
+                            <div>
+                                <div className="img">
+                                    <div onClick={dec} className="arrow"><img src={LArrow} alt="img" /></div>
+                                    <div className="img-child"><img alt="img" className="imgg" src={imgArray[count]} /></div>
+                                    <div onClick={inc} className="arrow"><img alt="img" src={RArrow} /></div>
+                                </div>
+                                <div style={{ textAlign: "center", width: "100%" }}>{count + 1}/{imgArray.length}</div>
+                            </div>
+                            <div className="attr">
+                                <div className="name">{prod.brand} {prod.name}</div>
+                                <div className="rating">Not rated</div>
+                                <div className="price">{prod.currency} {prod.price}</div>
+                                <div className="desc">
+                                    {prod.description}
+                                </div>
+                            </div>
+
+                            <div>
+                                <h1>Reviews</h1>
+                            </div>
+                            <div style={{ height: "80px" }}></div>
+                        </div>
+                        <div className="buy">
+                            <div className="btngrp">
+                                <Button color='#FB641B' margin="0px 20px" width='30%' title="Add to cart" />
+                                <Button color='#666fff' margin="0px 20px" width='30%' title="Buy now" />
+                            </div>
+                        </div>
+                    </div>
+                ) : (<Loading />)
+            }
+
+        </>
     )
 }

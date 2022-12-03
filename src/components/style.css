@@ -8,10 +8,13 @@
     cursor: pointer;
 }
 .nav-link{
+    display: block;
     font-size: 200%;
     padding:10px 20px 10px 0px;
     transition: all 0.1s ease-out;
     border-bottom: 1px solid grey;
+    color: white;
+    text-decoration: none;
 }
 .nav-link:hover{
     font-size: 230%;

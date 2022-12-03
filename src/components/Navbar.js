@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate,Link } from "react-router-dom"
 import "./style.css"
 import st from "./style"
 import { useState } from "react"
@@ -69,12 +69,12 @@ function Navb() {
                 showModal ? (
                     <div visible='false' style={style.modal}>
                         <ul className="navbar">
-                            <li onClick={()=>{setShowModal(false);navigate("/");}} className="nav-link">Home</li>
-                            <li onClick={()=>{setShowModal(false);navigate("/orders");}} className="nav-link">Orders</li>
-                            <li onClick={()=>{setShowModal(false);navigate("/cart");}} className="nav-link">Cart</li>
-                            <li onClick={()=>{setShowModal(false);navigate("/sell");}} className="nav-link">Sell</li>
-                            <li onClick={()=>{setShowModal(false);navigate("/account");}} className="nav-link">Account</li>
-                            {
+                            <Link onClick={()=>{setShowModal(false)}} to="/" className="nav-link">Home</Link>
+                            <Link onClick={()=>{setShowModal(false)}} to="/orders" className="nav-link">Orders</Link>
+                            <Link onClick={()=>{setShowModal(false)}} to="/cart" className="nav-link">Cart</Link>
+                            <Link onClick={()=>{setShowModal(false)}} to="/products" className="nav-link">Your Products</Link>
+                            <Link onClick={()=>{setShowModal(false)}} to="/account" className="nav-link">Account</Link>
+                           {
                                 localStorage.getItem('token') ? (
                                     <li onClick={()=>{setShowModal(false);localStorage.removeItem('token');navigate("/")}} className="nav-link">Logout</li>
                                 ) : (
