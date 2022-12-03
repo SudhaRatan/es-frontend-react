@@ -40,11 +40,11 @@ function Sell() {
     }, [auth])
 
     const [post, setPost] = useState({
-        brand: "",
         name: "",
+        brand: "",
         price: "",
-        description: "",
         currency: "",
+        description: "",
     })
 
     const handleChange = (e) => {
@@ -75,22 +75,15 @@ function Sell() {
             }
             reader.readAsDataURL(files[i])
         }
-        // console.log(e.target.files)
-        // const reader = new FileReader()
 
-        // reader.onloadend = () => {
-        //     setFiles(reader.result.toString())
-        // }
-        // reader.readAsDataURL(file)
     }
 
     const handleUpload = async (e) => {
-        
-        console.log(post,results)
+        // console.log(post,results)
         axios
             .post(`${API}/sell/upload`, {post,results})
             .then(res => {
-                console.log(res)
+                console.log(res.data)
             })
     }
 
