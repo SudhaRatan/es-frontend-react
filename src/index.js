@@ -12,6 +12,8 @@ import Admin from './components/admin';
 import Product from './components/product';
 import Sell from "./components/seller/Sell.js";
 import Products from './components/seller/products';
+import ChatApp from './components/chat';
+import TodoApp from './components/todo';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -29,6 +31,8 @@ root.render(
         <Route path='/product/:id' element={<Product />} />
         <Route path='/sell' element={<Sell />} />
         <Route path='/products' element={<Products />} />
+        <Route path='/chat' element={<ChatApp />} />
+        <Route path='/todo' element={<TodoApp />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
