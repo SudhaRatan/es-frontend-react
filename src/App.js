@@ -12,7 +12,7 @@ function App() {
     <div className="Home">
       <div className="feat" onClick={() => navigate("/product")}>
         Featuring section
-      </div>
+    </div>
       <div className="elec"></div>
       <div className="clothes"></div>
       <div className="toys"></div>
