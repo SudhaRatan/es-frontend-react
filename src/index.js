@@ -19,8 +19,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter >
-    <Navb style={st.navbar}/>
-    <div style={{height:"60px"}}></div>
+      <Navb style={st.navbar} />
+      <div style={{ height: "60px" }}></div>
       <Routes>
         <Route path="/" element={<App />} />
         <Route path='/login' element={<Login />} />
