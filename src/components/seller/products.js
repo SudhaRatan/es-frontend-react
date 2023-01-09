@@ -5,6 +5,7 @@ import axios from "axios"
 import Loading from "../loadingAnim"
 import "./styles/prods.css"
 import Button from "../button"
+import ProdCard from "../productCard/productCard"
 
 export default function Products() {
     axios.defaults.headers.get['x-access-token'] = localStorage.getItem('token')
@@ -58,21 +59,23 @@ export default function Products() {
                             {
                                 prods.map(prod => {
                                     return (
-                                        <div key={prod._id} className="prod-card">
-                                            <div className="prod-img">
-                                                <img height={200} className="prod-img" src={images[prod._id]} alt="efa" />
-                                            </div>
-                                            <Link to={"../product/" + prod._id} className="prod-name">
-                                                <div>{prod.name}</div>
-                                                <div>{prod.currency} {prod.price}</div>
-                                            </Link>
+                                        <>
+                                            <ProdCard
+                                                key={prod._id}
+                                                id={prod._id}
+                                                src={images[prod._id]}
+                                                name={prod.name}
+                                                currency={prod.currency}
+                                                price={prod.price}
+                                            // small="true"
+                                            />
+                                        </>
 
-
-                                        </div>
                                     )
                                 })
                             }
                         </div>
+
                     </>
                 ) : (<Loading />)
             }

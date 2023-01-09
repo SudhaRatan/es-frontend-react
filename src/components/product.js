@@ -73,7 +73,13 @@ export default function Product() {
                             <div className="attr">
                                 <div className="name">{prod.brand} {prod.name}</div>
                                 <div className="rating">Not rated</div>
-                                <div className="price">{prod.currency} {prod.price}</div>
+                                <div className="price">{prod.currency} {prod.price} &nbsp;
+                                    {
+                                        prod.category ? (
+                                            <span style={{ fontSize: "18px" }}>({prod.category})</span>
+                                        ) : null
+                                    }
+                                </div>
                                 <div className="desc">
                                     {prod.description}
                                 </div>

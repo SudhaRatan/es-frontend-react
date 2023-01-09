@@ -1,6 +1,4 @@
-*{
-    /* box-sizing: border-box; */
-}
+
 .prod-home{
     text-align: center;
 }
@@ -8,14 +6,14 @@
     margin-top: 20px;
     text-align: center;
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(400px,1fr));
+    grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
     width: 100vw;
     justify-content: center;
     align-items: center;
 
 }
 .prod-card{
-    
+    border-radius: 10px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     /* background-color: aqua; */
@@ -23,15 +21,15 @@
     justify-content: center;
     align-items:flex-start;
     margin:20px;
-    /* border: 1px solid grey; */
-    box-shadow: 1px 1px 5px 1px #80808050;
+    border: 1px solid #80808080;
+    box-shadow: 1px 1px 5px 1px #00000060;
     padding: 10px;
-    width: auto;
 }
 .prod-img{
     display:grid;
-    justify-content: right;
-    max-width: 300px;
+    justify-content: left;
+    max-width: fit-content;
+    /* border: 1px solid; */
     
 }
 .prod-name{

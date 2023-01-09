@@ -4,6 +4,7 @@ const st = {
         width: "100%",
     },
     navbar: {
+        zIndex:"10",
         cursor: "pointer",
         textAlign: "center",
         display: "grid",
@@ -12,6 +13,7 @@ const st = {
         gridTemplateColumns: "3fr 8fr 2fr",
         position: "fixed",
         width: "100%",
+        // zIndex:"10",
     }, nav: {
         backgroundColor: "#202124",
         color: "#fff",

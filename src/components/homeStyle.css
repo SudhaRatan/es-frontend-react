@@ -16,16 +16,27 @@
     display: grid;
     justify-content: center;
     align-items: center;
+    grid-template-columns: 1fr;
+    text-align: center;
 }
 .elec{
     height: 40vh;
     background-color: aquamarine;
+    display: grid;
+    justify-content: center;
+    align-items: center;
 }
 .clothes{
     height: 40vh;
     background-color: wheat;
+    display: grid;
+    justify-content: center;
+    align-items: center;
 }
 .toys{
     height: 40vh;
     background-color: #ffa334;
+    display: grid;
+    justify-content: center;
+    align-items: center;
 }

@@ -107,5 +107,6 @@ const style = {
         backdropFilter: "blur(10px)",
         alignItems: "",
         textAlign: "right",
+        zIndex:"10",
     }
 }

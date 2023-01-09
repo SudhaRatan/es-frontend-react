@@ -15,6 +15,28 @@ function Sell() {
 
     const navigate = useNavigate()
     const [auth, setAuth] = useState(null)
+    const categories = [
+        "smartphones",
+        "laptops",
+        "fragrances",
+        "skincare",
+        "groceries",
+        "home-decoration",
+        "furniture",
+        "tops",
+        "womens-dresses",
+        "womens-shoes",
+        "mens-shirts",
+        "mens-shoes",
+        "mens-watches",
+        "womens-watches",
+        "womens-bags",
+        "womens-jewellery",
+        "sunglasses",
+        "automotive",
+        "motorcycle",
+        "lighting"
+    ]
     useEffect(() => {
         axios
             .get(`${API}/sell/upload`)
@@ -48,6 +70,7 @@ function Sell() {
         price: "",
         currency: "",
         description: "",
+        category: "",
     })
 
     const handleChange = (e) => {
@@ -62,19 +85,19 @@ function Sell() {
     }
 
     // const [files, setFiles] = useState([])
-    const [results,setResults] = useState([])
+    const [results, setResults] = useState([])
 
 
     const handleFiles = async (e) => {
         const files = e.target.files
-        var temp =[]
+        var temp = []
         for (let i = 0; i < files.length; i++) {
             const reader = new FileReader()
             reader.onloadend = async () => {
                 const res = await reader.result.toString()
                 temp.push(res)
                 setResults(temp)
-                
+
             }
             reader.readAsDataURL(files[i])
         }
@@ -84,7 +107,7 @@ function Sell() {
     const handleUpload = async (e) => {
         // console.log(post,results)
         axios
-            .post(`${API}/sell/upload`, {post,results})
+            .post(`${API}/sell/upload`, { post, results })
             .then(res => {
                 console.log(res.data)
                 // console.log(results)
@@ -126,6 +149,21 @@ function Sell() {
                                 onChange={handleChange}
                                 value={post.price}
                             />
+                            <label className="label">Category</label>
+                            <select
+                                className="inp"
+                                onChange={handleChange}
+                                name="category"
+                            >
+                                <option selected disabled>Select a category</option>
+                                {
+                                    categories.map((category) => {
+                                        return (
+                                            <option value={category} >{category}</option>
+                                        )
+                                    })
+                                }
+                            </select>
 
                             <label className="label">Currency</label>
                             <select
@@ -158,7 +196,8 @@ function Sell() {
                             />
                         </div>
                         <Button onClick={handleUpload} color='#666fff' margin="20px 0px" width='100%' title="Upload Product" />
-                        <Button color='#FB641B' width='100%' title="Cancel" />
+                        
+                        <Button onClick={()=>navigate("/products")} color='#FB641B' width='100%' title="Cancel" />
                     </div>
 
                 ) : <Loading />
