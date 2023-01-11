@@ -16,6 +16,7 @@ function App() {
   const [clothes, setClothes] = useState(null)
   const [rand, setRand] = useState(null)
   const [featImg, setFeatImg] = useState(null)
+  const [elecImages, setElecImages] = useState(null)
 
   useEffect(() => {
     getFeature()
@@ -40,7 +41,8 @@ function App() {
     axios
       .get(`${API}/electronicProds`)
       .then((res) => {
-        console.log(res)
+        setElect(res.data.prods)
+        setElecImages(res.data.images)
       })
   }
 
@@ -81,12 +83,36 @@ function App() {
           )
         }
       </div>
-      <div className="elec">
+      <div style={{
+
+      }} className="elec">
+        <h2>Electronics Section</h2>
         {
-          elec ? (
+          elec && elecImages ? (
             <div style={{
-              position: "relative"
-            }}>Electronics section</div>
+              overflowX: "scroll",
+              overflowY: "hidden",
+              whiteSpace: "nowrap",
+              position: "relative",
+              width: "100%"
+              // float:"right"
+            }}>
+              {
+                elec.map(prod => {
+                  return (
+                    <ProdCard
+                      key={prod._id}
+                      id={prod._id}
+                      src={elecImages[prod._id]}
+                      name={prod.name}
+                      currency={prod.currency}
+                      price={prod.price}
+                      small="true"
+                    />
+                  )
+                })
+              }
+            </div>
           ) : (
             <>
               <Loading />

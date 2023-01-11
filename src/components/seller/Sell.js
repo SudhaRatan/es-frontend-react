@@ -16,26 +16,9 @@ function Sell() {
     const navigate = useNavigate()
     const [auth, setAuth] = useState(null)
     const categories = [
-        "smartphones",
-        "laptops",
-        "fragrances",
-        "skincare",
-        "groceries",
-        "home-decoration",
-        "furniture",
-        "tops",
-        "womens-dresses",
-        "womens-shoes",
-        "mens-shirts",
-        "mens-shoes",
-        "mens-watches",
-        "womens-watches",
-        "womens-bags",
-        "womens-jewellery",
-        "sunglasses",
-        "automotive",
-        "motorcycle",
-        "lighting"
+        "electronics",
+        "clothes",
+        "toys",
     ]
     useEffect(() => {
         axios
