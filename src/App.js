@@ -37,7 +37,11 @@ function App() {
   }
 
   const getElectronics = () => {
-
+    axios
+      .get(`${API}/electronicProds`)
+      .then((res) => {
+        console.log(res)
+      })
   }
 
   const getClothes = () => {
