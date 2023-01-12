@@ -60,9 +60,8 @@ export default function Products() {
 							{
 								prods.map(prod => {
 									return (
-										<div style={style.cardContainer}>
+										<div style={style.cardContainer} key={prod._id}>
 											<ProdCard
-												key={prod._id}
 												id={prod._id}
 												src={images[prod._id]}
 												name={prod.name}
