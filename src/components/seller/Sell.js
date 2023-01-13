@@ -120,8 +120,7 @@ function Sell() {
 
 	const handleUpload = async (e) => {
 		// console.log(post,results)
-		if (uploadStat == true) {
-			const qwe = await handleF()
+		if (uploadStat === true) {
 			axios
 				.post(`${API}/sell/upload`, { post, results })
 				.then(res => {
