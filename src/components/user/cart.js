@@ -36,17 +36,17 @@ function Cart() {
 			.then(async (res) => {
 				try {
 					if (res.data.auth) {
-						if(res.data.prods.productIds.length !== 0) {
+						if (res.data.prods.productIds.length !== 0) {
 							setCart(res.data.message)
 							const ps = res.data.prods.productIds
 							setProds(ps)
 							getImages(res.data.prods._id)
 						}
-						else{
+						else {
 							setProds(null)
 							setCart("empty")
 						}
-						
+
 					}
 					else {
 						localStorage.removeItem('token')
@@ -92,10 +92,9 @@ function Cart() {
 			{
 				cart ? (
 					<div>
-					{
-						prods ? <span>Your Cart</span> : <span>Empty Cart</span>
-					}
-					
+						{
+							prods ? <span>Your Cart</span> : <span>Empty Cart</span>
+						}
 						<div className="Prods-cont">
 							{
 								prods ?
@@ -136,22 +135,21 @@ function Cart() {
 										)
 									}) : null
 							}
-
-							{
-								prods ? (
-									<div style={{
-										position: "absolute",
-										bottom: "0",
-										display: "grid",
-										justifyContent: 'center',
-										width: "100vw"
-									}}>
-										<Button textColor="#fffff0" color="#555666" width="200px" margin="10px 0px" title="Buy now" />
-									</div>
-								) : null
-							}
-
 						</div>
+						{
+							prods ? (
+								<div style={{
+									position: "fixed",
+									margin:"auto",
+									bottom: "0",
+									display: "grid",
+									justifyContent: 'center',
+									width: "100%"
+								}}>
+									<Button textColor="#fffff0" color="#555666" width="200px" margin="10px 0px" title="Buy now" />
+								</div>
+							) : null
+						}
 					</div>
 				) : <Loading />
 			}
