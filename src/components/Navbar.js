@@ -47,8 +47,7 @@ function Navb() {
                             border:"1px solid grey",
                             borderRadius:"10px",
                             color:"#fff",
-                            fontSize:"20px"
-
+                            fontSize:"20px",
                         }} type="text" />
                     </div>
                 </div>
@@ -57,7 +56,7 @@ function Navb() {
                     color: "#fff",
                     padding: "10px 10px 0 0",
                 }}>
-                    <div style={{display:"grid",justifyContent:"flex-end"}}>
+                    <div style={{display:"grid",justifyContent:"flex-end",cursor:"pointer",}}>
                         <img width={40} height={40} src={logo} alt="nav" />
                     </div>
                 </div>

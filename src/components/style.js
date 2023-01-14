@@ -5,7 +5,7 @@ const st = {
     },
     navbar: {
         zIndex:"17",
-        cursor: "pointer",
+        // cursor: "pointer",
         textAlign: "center",
         display: "grid",
         margin: "auto",
@@ -18,6 +18,9 @@ const st = {
         backgroundColor: "#202124",
         color: "#fff",
         padding: "20px 0",
+    },
+    nav_link:{
+        cursor:"pointer",
     }, App: {
         textAlign: "center",
         fontSize: "40px"
