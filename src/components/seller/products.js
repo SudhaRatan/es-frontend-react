@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react"
-import { useNavigate, Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { API } from "../../App"
 import axios from "axios"
 import Loading from "../loadingAnim"
 import "./styles/prods.css"
 import Button from "../button"
 import ProdCard from "../productCard/productCard"
-import st from "../style"
 
 export default function Products() {
 	axios.defaults.headers.get['x-access-token'] = localStorage.getItem('token')
@@ -55,8 +54,6 @@ export default function Products() {
 				auth && images ? (
 					<><Button title="Upload a product" color="#666fff" onClick={() => navigate("/sell")} />
 						<div className="Prods-cont">
-
-
 							{
 								prods.map(prod => {
 									return (
@@ -69,7 +66,7 @@ export default function Products() {
 												price={prod.price}
 											// small="true"
 											/>
-											
+
 										</div>
 									)
 								})

@@ -10,7 +10,8 @@ const Button = (props) => {
             boxSizing: "border-box",
             margin: `${props.margin}`,
             backgroundColor: `${props.color}`,
-            boxShadow: `0px 0px 8px 1px ${props.color}90`
+            boxShadow: `0px 0px 8px 1px ${props.color}90`,
+            color:props.textColor
         }}>{props.title}</button>
 
     )
