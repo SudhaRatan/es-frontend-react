@@ -4,7 +4,7 @@ const st = {
         width: "100%",
     },
     navbar: {
-        zIndex:"10",
+        zIndex:"17",
         cursor: "pointer",
         textAlign: "center",
         display: "grid",
@@ -28,7 +28,8 @@ const st = {
         padding: "10px 40px",
         color: "white",
         borderRadius: "5px",
-        boxShadow: "0px 0px 10px 2px #666fff"
+        boxShadow: "0px 0px 10px 2px #666fff",
+        cursor:"pointer",
     }, btn1: {
         width: "100%",
         backgroundColor: "#FB641B",
@@ -36,7 +37,8 @@ const st = {
         padding: "10px 40px",
         color: "white",
         borderRadius: "5px",
-        boxShadow: "0px 0px 10px 2px #FB641B"
+        boxShadow: "0px 0px 10px 2px #FB641B",
+        cursor:"pointer",
     }, inp: {
         height: "40px",
         padding: " 5px 10px",

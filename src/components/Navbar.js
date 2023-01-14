@@ -3,24 +3,21 @@ import "./style.css"
 import st from "./style"
 import { useState } from "react"
 import logo from "./nav-logo.png"
-import autoAnimate from '@formkit/auto-animate'
-import { useEffect, useRef } from 'react'
 
 function Navb() {
-    const parentRef = useRef(null)
     const navigate = useNavigate()
     const [showModal, setShowModal] = useState(false)
 
     const modalHandle = () => {
         setShowModal(!showModal)
     }
-    useEffect(() => {
-        if (parentRef.current) {
-          autoAnimate(parentRef.current);   
-        }
-      }, [parentRef])
+    // useEffect(() => {
+    //     if (parentRef.current) {
+    //       autoAnimate(parentRef.current);   
+    //     }
+    //   }, [parentRef])
     return (
-        <div ref={parentRef} style={st.cont}>
+        <div style={st.cont}>
             <div style={st.navbar}>
                 <div className="nav" onClick={() => { navigate("/"); setShowModal(false) }} style={st.nav}>
                     <div style={st.nav_link}>

@@ -11,7 +11,8 @@ const Button = (props) => {
             margin: `${props.margin}`,
             backgroundColor: `${props.color}`,
             boxShadow: `0px 0px 8px 1px ${props.color}90`,
-            color:props.textColor
+            color:props.textColor,
+            cursor:"pointer"
         }}>{props.title}</button>
 
     )

@@ -122,7 +122,7 @@ function Cart() {
 													}
 													<div style={{
 														position: "absolute",
-														zIndex: "10",
+														zIndex: "5",
 														transform: "translateY(-280px)",
 														margin: "10px",
 													}}
