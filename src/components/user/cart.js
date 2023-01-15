@@ -87,6 +87,10 @@ function Cart() {
 			})
 	}
 
+	const buyNow = () => {
+		console.log(prods)
+	}
+
 	return (
 		<div style={st.App}>
 			{
@@ -125,6 +129,7 @@ function Cart() {
 														zIndex: "5",
 														transform: "translateY(-280px)",
 														margin: "10px",
+														cursor: "pointer",
 													}}
 														onClick={() => handleDelete(prod._id)}
 													>
@@ -140,13 +145,20 @@ function Cart() {
 							prods ? (
 								<div style={{
 									position: "fixed",
-									margin:"auto",
+									margin: "auto",
 									bottom: "0",
 									display: "grid",
 									justifyContent: 'center',
 									width: "100%"
 								}}>
-									<Button textColor="#fffff0" color="#555666" width="200px" margin="10px 0px" title="Buy now" />
+									<Button
+										textColor="#fffff0"
+										color="#555666"
+										width="200px"
+										margin="10px 0px"
+										title="Buy now"
+										onClick={buyNow}
+									/>
 								</div>
 							) : null
 						}
