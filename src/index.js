@@ -14,6 +14,7 @@ import Sell from "./components/seller/Sell.js";
 import Products from './components/seller/products';
 import ChatApp from './components/chat';
 import TodoApp from './components/todo';
+import Account from './pages/account';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -24,10 +25,11 @@ root.render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path='/login' element={<Login />} />
+
         <Route path='/signup' element={<Signup />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/secret' element={<Admin />} />
-        {/* <Route path='/product' element={<Product />} /> */}
+        <Route path='/account' element={<Account />} />
         <Route path='/product/:id' element={<Product />} />
         <Route path='/sell' element={<Sell />} />
         <Route path='/products' element={<Products />} />

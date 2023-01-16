@@ -1,5 +1,4 @@
 import "./components/homeStyle.css"
-import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Loading from "./components/loadingAnim";
@@ -25,8 +24,6 @@ function App() {
     getRandom()
   }, [])
 
-  const navigate = useNavigate();
-
   const getFeature = () => {
     axios
       .get(`${API}/featProd`)
@@ -44,6 +41,8 @@ function App() {
         setElect(res.data.prods)
         setElecImages(res.data.images)
       })
+      setClothes(null)
+      setRand(null)
   }
 
   const getClothes = () => {
