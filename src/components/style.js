@@ -79,5 +79,21 @@ const st = {
         // backgroundColor:"black",
         justifyContent: "center",
     },
+    login1: {
+        height: "90vh",
+        textAlign: "center",
+        display: "grid",
+        margin: "auto",
+        // backgroundColor:"black",
+        justifyContent: "center",
+        maxWidth:"80vw",
+    },
+    in:{
+        textAlign:"start",
+    },
+    labeltxt:{
+        fontSize:"18px",
+        fontWeight:"bold",
+    }
 }
 export default st

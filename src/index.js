@@ -15,6 +15,7 @@ import Products from './components/seller/products';
 import ChatApp from './components/chat';
 import TodoApp from './components/todo';
 import Account from './pages/account';
+import AddressForm from './pages/AddressForm';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -30,6 +31,7 @@ root.render(
         <Route path='/cart' element={<Cart />} />
         <Route path='/secret' element={<Admin />} />
         <Route path='/account' element={<Account />} />
+        <Route path='/account/addAddress' element={<AddressForm />} />
         <Route path='/product/:id' element={<Product />} />
         <Route path='/sell' element={<Sell />} />
         <Route path='/products' element={<Products />} />

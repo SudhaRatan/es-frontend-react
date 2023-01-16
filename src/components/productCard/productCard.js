@@ -6,9 +6,9 @@ const ProdCard = (props) => {
   return (
     <div style={{
       display: props.small ? "inline-block" : "",
-      maxWidth: props.small ? "320px" : "100%",
+      maxWidth: props.small ? "320px" : "",
       backgroundColor: "#ffffff",
-      // boxShadow:"3px 3px 10px 1px #00000080"
+      // boxShadow:"3px 3px 10px 1px #00000080",
     }} className="prod-card">
       <div className="prod-img">
       {

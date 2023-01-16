@@ -41,8 +41,8 @@ function App() {
         setElect(res.data.prods)
         setElecImages(res.data.images)
       })
-      setClothes(null)
-      setRand(null)
+    setClothes(null)
+    setRand(null)
   }
 
   const getClothes = () => {
@@ -65,15 +65,26 @@ function App() {
               gridTemplateColumns: "1fr"
             }}>
               <h2>Featuring Product</h2>
-              <ProdCard
-                key={feat._id}
-                id={feat._id}
-                src={featImg}
-                name={feat.name}
-                currency={feat.currency}
-                price={feat.price}
-              // small="true"
-              />
+              <div style={{
+                display:"grid",
+                // backgroundColor:"#fff",
+                // gridAutoColumns:"",
+                alignItems:"center",
+                justifyContent:"center",
+                width:"90vw"
+                
+              }}>
+                <ProdCard
+                  key={feat._id}
+                  id={feat._id}
+                  src={featImg}
+                  name={feat.name}
+                  currency={feat.currency}
+                  price={feat.price}
+                // small="true"
+                />
+              </div>
+
             </div>
           ) : (
             <>

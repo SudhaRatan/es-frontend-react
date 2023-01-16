@@ -64,7 +64,7 @@ export default function Login() {
                 <div style={st.form}>
                     {
                         authStat ? (
-                            <div style={{ color: "red", fontSize: "20px" }}>
+                            <div style={{ color: "red", fontSize: "20px",transform:"translateY(-10px)" }}>
                                 {authStat}
                             </div>
                         ) : null
