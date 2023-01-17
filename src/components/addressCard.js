@@ -2,6 +2,7 @@ import add from ".././images/add.png"
 import { Link } from "react-router-dom";
 import "./style.css"
 import axios from "axios";
+import Button from "./button";
 
 export default function AddressCard(props) {
   axios.defaults.headers.get['x-access-token'] = localStorage.getItem('token')
@@ -20,37 +21,56 @@ export default function AddressCard(props) {
 
         <div >
           {
-            props.addresses && props.addresses.map(address => {
+            props.addresses && props.addresses.map((address, index) => {
               return (
-                <div key={address.address} style={style.txt}>
-                  <p><b>{address.fullName}</b></p>
-                  <p>{address.address}</p>
-                  <p>{address.city}, {address.state}, {address.zip}</p>
-                  <p>{address.country}</p>
-                  <p>Phone number : {address.phoneNumber}</p>
+                <div key={index} style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr auto",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  borderBottom:"1px solid #808080"
+                }}>
+                  <div  style={style.txt}>
+                    <p><b>{address.fullName}</b></p>
+                    <p>{address.address}</p>
+                    <p>{address.city}, {address.state}, {address.zip}</p>
+                    <p>{address.country}</p>
+                    <p>Phone number : {address.phoneNumber}</p>
+                  </div>
+                  {
+                    props.sel &&
+                    <div>
+                      <Button title="Select" color="#202124" width="100px" textColor="#fff" margin="0px 50px 0px 0px" />
+                    </div>
+                  }
+
                 </div>
+
               )
             })
           }
-          <Link className="addAddress" to="/account/addAddress">
-            <div style={style.txt1}>
-              <img style={{
-                boxShadow: "1px 1px 5px #80808080",
-                borderRadius: "25px",
-                width: "40px",
-                cursor: "pointer",
-              }} src={add} alt="Add button"
-              />
-              <div style={{
-                fontSize: "24px",
-                // backgroundColor: "#fff000",
-                marginLeft: "20px",
-                display: "flex",
-                alignItems: "center",
-                cursor: "pointer",
-              }}>Add address</div>
-            </div>
-          </Link>
+          {!props.sel &&
+            <Link className="addAddress" to="/account/addAddress">
+              <div style={style.txt1}>
+                <img style={{
+                  boxShadow: "1px 1px 5px #80808080",
+                  borderRadius: "25px",
+                  width: "40px",
+                  cursor: "pointer",
+                }} src={add} alt="Add button"
+                />
+                <div style={{
+                  fontSize: "24px",
+                  // backgroundColor: "#fff000",
+                  marginLeft: "20px",
+                  display: "flex",
+                  alignItems: "center",
+                  cursor: "pointer",
+                }}>Add address</div>
+              </div>
+            </Link>
+          }
+
 
         </div>
 
@@ -69,7 +89,7 @@ const style = {
     maxWidth: "800px",
   },
   txt: {
-    borderBottom: "1px solid #808080",
+    // borderBottom: "1px solid #808080",
     padding: "20px",
     fontSize: "20px",
     display: "flex",

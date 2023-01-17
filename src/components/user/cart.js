@@ -88,7 +88,8 @@ function Cart() {
 	}
 
 	const buyNow = () => {
-		console.log(prods)
+		// console.log(prods)
+		navigate("/buy")
 	}
 
 	return (

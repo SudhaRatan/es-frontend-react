@@ -16,6 +16,10 @@ import ChatApp from './components/chat';
 import TodoApp from './components/todo';
 import Account from './pages/account';
 import AddressForm from './pages/AddressForm';
+import Buy from './pages/Buy';
+import SelectAddress from './components/buy/selectAddress';
+import SelectPayment from "./components/buy/selectPayment";
+import PlaceOrder from "./components/buy/placeOrder";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -26,12 +30,16 @@ root.render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path='/login' element={<Login />} />
-
         <Route path='/signup' element={<Signup />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/secret' element={<Admin />} />
         <Route path='/account' element={<Account />} />
         <Route path='/account/addAddress' element={<AddressForm />} />
+        <Route path='/buy' element={<Buy />} >
+          <Route path="" element={<SelectAddress />} />
+          <Route path="payment" element={<SelectPayment />} />
+          <Route path="placeorder" element={<PlaceOrder />} />
+        </Route>
         <Route path='/product/:id' element={<Product />} />
         <Route path='/sell' element={<Sell />} />
         <Route path='/products' element={<Products />} />
