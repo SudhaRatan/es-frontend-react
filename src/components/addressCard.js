@@ -1,57 +1,11 @@
 import add from ".././images/add.png"
 import { Link } from "react-router-dom";
 import "./style.css"
+import axios from "axios";
 
-export default function AddressCard() {
-
-
-  const addresses = [
-    {
-      country: "India",
-      fullName: "Ratan kumar",
-      phoneNumber: 123123123,
-      address: "qweqweqwe qdfdvkjsbnkj ergkjerngvjeng ejkbnlsbns",
-      city: "jeypore",
-      state: "Odisha",
-      zip: 764001
-    },
-    {
-      country: "India",
-      fullName: "Ratan kumar",
-      phoneNumber: 123123123,
-      address: "qweqweqwe qdfdvkjsbnkj ergkjerngvjeng ejkbnlsbns",
-      city: "jeypore",
-      state: "Odisha",
-      zip: 764001
-    },
-    {
-      country: "India",
-      fullName: "Ratan kumar",
-      phoneNumber: 123123123,
-      address: "qweqweqwe qdfdvkjsbnkj ergkjerngvjeng ejkbnlsbns",
-      city: "jeypore",
-      state: "Odisha",
-      zip: 764001
-    },
-    {
-      country: "India",
-      fullName: "Ratan kumar",
-      phoneNumber: 123123123,
-      address: "qweqweqwe qdfdvkjsbnkj ergkjerngvjeng ejkbnlsbns",
-      city: "jeypore",
-      state: "Odisha",
-      zip: 764001
-    },
-    {
-      country: "India",
-      fullName: "Ratan kumar",
-      phoneNumber: 123123123,
-      address: "qweqweqwe qdfdvkjsbnkj ergkjerngvjeng ejkbnlsbns",
-      city: "jeypore",
-      state: "Odisha",
-      zip: 764001
-    },
-  ]
+export default function AddressCard(props) {
+  axios.defaults.headers.get['x-access-token'] = localStorage.getItem('token')
+  // axios.defaults.headers.post['x-access-token'] = localStorage.getItem('token')
 
   return (
     <div style={{
@@ -66,9 +20,9 @@ export default function AddressCard() {
 
         <div >
           {
-            addresses && addresses.map(address => {
+            props.addresses && props.addresses.map(address => {
               return (
-                <div style={style.txt}>
+                <div key={address.address} style={style.txt}>
                   <p><b>{address.fullName}</b></p>
                   <p>{address.address}</p>
                   <p>{address.city}, {address.state}, {address.zip}</p>

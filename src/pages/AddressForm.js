@@ -3,14 +3,14 @@ import "../components/style.css";
 import countries from "../countries";
 
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, } from "react";
 import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
 import { API } from "../App";
 
 export default function AddressForm() {
   axios.defaults.headers.get['x-access-token'] = localStorage.getItem('token')
-  const location = useLocation();
+  axios.defaults.headers.post['x-access-token'] = localStorage.getItem('token')
+
   const navigate = useNavigate();
 
   const [post, setPost] = useState({
@@ -23,7 +23,7 @@ export default function AddressForm() {
     zip: "",
   })
 
-  const [authStat, setAuthStat] = useState(null)
+  const [message,setMessage] = useState(null)
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -33,35 +33,33 @@ export default function AddressForm() {
         [name]: value,
       }
     })
-
-    console.log(post)
+    // console.log(post)
   }
 
   const handleClick = (event) => {
     event.preventDefault()
     axios
-      .post(`${API}/login`, post)
+      .post(`${API}/account/address`, post)
       .then((res) => {
-        if (res.data.auth) {
-          localStorage.setItem('token', res.data.token)
-          navigate("/")
-          // console.log(localStorage.getItem('token'))
-        } else {
-          setAuthStat(res.data)
-        }
+        // console.log(res)
+          if(res.data.auth){
+            navigate("/account")
+          } else{
+            setMessage(res.data.message)
+          }
       })
 
   }
 
-  useEffect(() => {
-    // if(localStorage.getItem("token")) navigate("/cart")
-    try {
-      if (location.state.msg) setAuthStat(location.state.msg)
-    } catch (error) {
+  // useEffect(() => {
+  //   // if(localStorage.getItem("token")) navigate("/cart")
+  //   try {
+  //     if (location.state.msg) setAuthStat(location.state.msg)
+  //   } catch (error) {
 
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [setAuthStat])
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [setAuthStat])
 
 
   return (
@@ -70,9 +68,9 @@ export default function AddressForm() {
       <div style={st.login1}>
         <div>
           {
-            authStat ? (
-              <div style={{ color: "red", fontSize: "20px", transform: "translateY(-10px)" }}>
-                {authStat}
+            message ? (
+              <div style={{ color: "red", fontSize: "20px", }}>
+                {message}
               </div>
             ) : null
           }

@@ -57,7 +57,7 @@ const Account = () => {
               borderTop: "1px solid #808080",
               padding: "5px"
             }}>Your Addresses</h2>
-            <AddressCard />
+            <AddressCard ids={userData}  addresses={userData.addresses}/>
           </>
           :
           <Loading />
