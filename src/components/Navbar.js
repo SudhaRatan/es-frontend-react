@@ -20,9 +20,7 @@ function Navb() {
         <div style={st.cont}>
             <div style={st.navbar}>
                 <div className="nav" onClick={() => { navigate("/"); setShowModal(false) }} style={st.nav}>
-                    <div style={st.nav_link}>
                         WebName
-                    </div>
                 </div>
                 {/* <div className="nav" onClick={() => {navigate("/login");setShowModal(false)}} style={st.nav}>
                     <div style={st.nav_link}>

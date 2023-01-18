@@ -24,3 +24,10 @@
     color:#000;
     text-decoration: none;
 }
+.nav{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    vertical-align: middle;
+}

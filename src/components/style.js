@@ -17,7 +17,8 @@ const st = {
     }, nav: {
         backgroundColor: "#202124",
         color: "#fff",
-        padding: "20px 0",
+        // padding: "10px 0",
+        veerticalAlign:"center"
     },
     nav_link:{
         cursor:"pointer",
