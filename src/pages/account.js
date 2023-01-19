@@ -24,7 +24,7 @@ const Account = () => {
         } else {
           navigate("/login", {
             state: {
-              msg: "Login to continue"
+              msg: "Login to continue "
             }
           })
         }

@@ -3,10 +3,19 @@ import { Link } from "react-router-dom";
 import "./style.css"
 import axios from "axios";
 import Button from "./button";
+import { API } from "../App";
 
 export default function AddressCard(props) {
   axios.defaults.headers.get['x-access-token'] = localStorage.getItem('token')
   // axios.defaults.headers.post['x-access-token'] = localStorage.getItem('token')
+
+  const selAddress = (index) => {
+    axios
+      .get(`${API}/`)
+      .then(res => {
+        console.log(res)
+      })
+  }
 
   return (
     <div style={{
@@ -40,7 +49,7 @@ export default function AddressCard(props) {
                   {
                     props.sel &&
                     <div>
-                      <Button title="Select" color="#202124" width="100px" textColor="#fff" margin="0px 50px 0px 0px" />
+                      <Button onClick={()=>selAddress(index)} title="Select" color="#202124" width="100px" textColor="#fff" margin="0px 50px 0px 0px" />
                     </div>
                   }
 
