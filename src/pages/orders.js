@@ -9,7 +9,6 @@ export default function Orders(){
       fontSize:"28px",
       fontWeight:"600",
     }}>Orders Page</span>
-    </div>
-    
+    </div> 
   )
 }
