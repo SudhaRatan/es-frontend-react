@@ -1,4 +1,13 @@
 const currency = {
+	"INR": {
+		"symbol": "Rs",
+		"name": "Indian Rupee",
+		"symbol_native": "টকা",
+		"decimal_digits": 2,
+		"rounding": 0,
+		"code": "INR",
+		"name_plural": "Indian rupees"
+	},
 	"USD": {
 		"symbol": "$",
 		"name": "US Dollar",
@@ -430,15 +439,6 @@ const currency = {
 		"rounding": 0,
 		"code": "ILS",
 		"name_plural": "Israeli new sheqels"
-	},
-	"INR": {
-		"symbol": "Rs",
-		"name": "Indian Rupee",
-		"symbol_native": "টকা",
-		"decimal_digits": 2,
-		"rounding": 0,
-		"code": "INR",
-		"name_plural": "Indian rupees"
 	},
 	"IQD": {
 		"symbol": "IQD",

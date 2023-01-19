@@ -15,11 +15,12 @@ export default function AddressCard(props) {
   const [auth, setAuth] = useState(false)
 
   const selAddress = (index) => {
-    // console.log(index)
+    console.log(props)
     navigate("/buy/payment", {
       state: {
         index,
-        prods: props.prods
+        prods: props.prods,
+        cart: props.cart
       }
     })
   }

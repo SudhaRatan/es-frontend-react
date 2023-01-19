@@ -91,7 +91,8 @@ function Cart() {
 		// console.log(prods)
 		navigate("/buy", {
 			state: {
-				prods
+				prods,
+				cart: true,
 			}
 		})
 	}

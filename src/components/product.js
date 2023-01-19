@@ -100,7 +100,7 @@ export default function Product() {
 									<div className="img-child"><img alt="img" className="imgg" src={imgArray[count]} /></div>
 									<div onClick={inc} className="arrow"><img alt="img" src={RArrow} /></div>
 								</div>
-								<div style={{ textAlign: "center", width: "100%" }}>{count + 1}/{imgArray.length}</div>
+								<div style={{ textAlign: "center", width: "100%",marginBottom:"12px" }}>{count + 1}/{imgArray.length}</div>
 							</div>
 							{
 								loading ? <Loading /> : null
