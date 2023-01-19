@@ -19,7 +19,7 @@ import AddressForm from './pages/AddressForm';
 import Buy from './pages/Buy';
 import SelectAddress from './components/buy/selectAddress';
 import SelectPayment from "./components/buy/selectPayment";
-import PlaceOrder from "./components/buy/placeOrder";
+import Orders from './pages/orders';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -38,8 +38,8 @@ root.render(
         <Route path='/buy' element={<Buy />} >
           <Route path="" element={<SelectAddress />} />
           <Route path="payment" element={<SelectPayment />} />
-          <Route path="placeorder" element={<PlaceOrder />} />
         </Route>
+        <Route path='/orders' element={<Orders />} />
         <Route path='/product/:id' element={<Product />} />
         <Route path='/sell' element={<Sell />} />
         <Route path='/products' element={<Products />} />

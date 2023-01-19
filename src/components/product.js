@@ -34,7 +34,9 @@ export default function Product() {
 	}
 
 	const buyNow = () => {
-
+		navigate("/buy",{
+			state: {prods: [prod]}
+		})
 	}
 
 	const addToCart = () => {

@@ -22,7 +22,7 @@ function Cart() {
 	const [images, setImages] = useState(null)
 	useEffect(() => {
 		if (prods) {
-
+			// console.log(prods)
 		} else {
 			getProducts()
 		}
@@ -89,7 +89,11 @@ function Cart() {
 
 	const buyNow = () => {
 		// console.log(prods)
-		navigate("/buy")
+		navigate("/buy", {
+			state: {
+				prods
+			}
+		})
 	}
 
 	return (
