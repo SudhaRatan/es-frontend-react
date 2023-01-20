@@ -27,12 +27,13 @@
     border-bottom: 1px solid #808080;
 }
 .elec{
-    height: 40vh;
+    /* height: 40vh; */
     /* background-color: aquamarine; */
     display: grid;
     justify-content: center;
     align-items: center;
     overflow-y: hidden;
+    /* overflow-x: scroll; */
     border-bottom: 1px solid #808080;
 }
 .clothes{

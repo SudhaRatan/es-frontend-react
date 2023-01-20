@@ -93,9 +93,7 @@ function App() {
           )
         }
       </div>
-      <div style={{
-
-      }} className="elec">
+      <div className="elec">
         <h2 style={{marginBottom:"5px",marginTop:"5px",}}>Electronics Section</h2>
         {
           elec && elecImages ? (
