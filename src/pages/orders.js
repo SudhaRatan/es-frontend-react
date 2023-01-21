@@ -10,7 +10,7 @@ export default function Orders() {
   axios.defaults.headers.get['x-access-token'] = localStorage.getItem('token')
 
   const [auth, setAuth] = useState(null)
-  const [orders,setOrders] = useState(null)
+  const [orders, setOrders] = useState(null)
   const navigate = useNavigate()
 
   const getOrders = () => {
@@ -22,8 +22,8 @@ export default function Orders() {
           setAuth(res.data.auth)
           setOrders(res.data.orders.orders)
         } else {
-          navigate("/login",{
-            state:{
+          navigate("/login", {
+            state: {
               msg: "Login to continue"
             }
           })
@@ -33,12 +33,12 @@ export default function Orders() {
 
   useEffect(() => {
     getOrders()
-		// eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
     <div style={{
-      display: "grid",
+      // textAlign:"center",
     }}>
       <span style={{
         textAlign: "center",
@@ -46,20 +46,30 @@ export default function Orders() {
         fontSize: "28px",
         fontWeight: "600",
       }}>
-        Orders Page
+        Your Orders
       </span>
       {
         auth && orders ?
-          <>
+          <div style={{
+            boxSizing: "border-box",
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit,minmax(420px,1fr))",
+            // width: "100vw",
+            gap: "20px",
+            padding:"20px",
+          }}>
             {
               orders.map(order => {
-                return (<div key={order._id}>
-                <OrdersCard order={order} />
-                  {/* {console.log([(d.getDate()) ,(d.getMonth()+1), d.getFullYear()].join('/'),[d.getHours(),d.getMinutes()].join(":"))} */}
-                </div>)
+                return (
+                  <div style={{
+                    boxShadow: "2px 2px 10px 1px #80808080",
+                  }} key={order._id}>
+                    <OrdersCard order={order} />
+                  </div>
+                )
               })
             }
-          </> : <Loading />
+          </div> : <Loading />
       }
     </div>
   )

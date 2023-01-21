@@ -27,7 +27,6 @@ const ProdCardB = (props) => {
       display: props.small ? "inline-block" : "",
       maxWidth: props.small ? "320px" : "",
       backgroundColor: "#ffffff",
-      // boxShadow:"3px 3px 10px 1px #00000080",
     }} className="prod-card">
       <div className="prod-img">
       {
