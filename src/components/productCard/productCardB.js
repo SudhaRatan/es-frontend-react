@@ -1,8 +1,27 @@
 import "../../components/seller/styles/prods.css"
 import { Link } from "react-router-dom"
 import Loading from "../loadingAnim"
+import { API } from "../../App"
+import { useState,useEffect } from "react"
+import axios from "axios"
 
 const ProdCardB = (props) => {
+
+  const [image,setImage] = useState(null)
+
+  useEffect(()=>{
+    const getImage = (id) => {
+      axios
+        .get(`${API}/account/orders/image/${id}`)
+        .then(res => {
+          // console.log(res.data)
+          setImage(res.data)
+        })
+    }
+    getImage(props.id)
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+
   return (
     <div style={{
       display: props.small ? "inline-block" : "",
@@ -12,9 +31,9 @@ const ProdCardB = (props) => {
     }} className="prod-card">
       <div className="prod-img">
       {
-        props.src ? (
+        image ? (
           <Link to={"../product/" + props.id} className="prod-name">
-          <img height={200} width={150} className="prod-img" src={props.src} alt="Product Imge" />
+          <img height={200} width={150} className="prod-img" src={image} alt="Product Imge" />
         </Link>
         ) : (
           <Loading />
@@ -23,7 +42,7 @@ const ProdCardB = (props) => {
         
       </div>
       <Link to={"../product/" + props.id} className="prod-name">
-        <div>{props.name}</div>
+        <div>{props.brand} {props.name}</div>
         <div>{props.currency} {props.price}</div>
       </Link>
     </div>

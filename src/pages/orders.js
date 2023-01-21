@@ -1,9 +1,10 @@
-import ProdCardB from "../components/productCard/productCardB"
+// import ProdCardB from "../components/productCard/productCardB"
 import { useEffect, useState } from "react"
 import Loading from "../components/loadingAnim"
 import axios from "axios"
 import { API } from "../App"
 import { useNavigate } from "react-router-dom"
+import OrdersCard from "../components/orders/ordersCard"
 
 export default function Orders() {
   axios.defaults.headers.get['x-access-token'] = localStorage.getItem('token')
@@ -16,7 +17,7 @@ export default function Orders() {
     axios
       .get(`${API}/account/orders`)
       .then(res => {
-        console.log(res.data)
+        // console.log(res.data)
         if (res.data.auth) {
           setAuth(res.data.auth)
           setOrders(res.data.orders.orders)
@@ -32,6 +33,7 @@ export default function Orders() {
 
   useEffect(() => {
     getOrders()
+		// eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -51,7 +53,10 @@ export default function Orders() {
           <>
             {
               orders.map(order => {
-                return (<div key={order._id}></div>)
+                return (<div key={order._id}>
+                <OrdersCard order={order} />
+                  {/* {console.log([(d.getDate()) ,(d.getMonth()+1), d.getFullYear()].join('/'),[d.getHours(),d.getMinutes()].join(":"))} */}
+                </div>)
               })
             }
           </> : <Loading />

@@ -40,6 +40,7 @@ function Cart() {
 							setCart(res.data.message)
 							const ps = res.data.prods.productIds
 							setProds(ps)
+							console.log(res.data.prods,ps)
 							getImages(res.data.prods._id)
 						}
 						else {
