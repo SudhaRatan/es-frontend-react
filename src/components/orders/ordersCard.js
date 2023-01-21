@@ -5,14 +5,62 @@ import { useState } from "react"
 export default function OrdersCard(props) {
 
   const d = new Date(props.order.orderDate)
-  const [toggle,setToggle] = useState(true)
+  const [toggle, setToggle] = useState(false)
+  console.log(props.order)
 
   return (
     <div style={{
       position: "relative",
       padding: "10px",
       boxSizing: "border-box",
+      overflowY: "hidden",
     }}>
+      <div style={{
+        position: "absolute",
+        transform: "translate(-50px,28px)",
+        display: "grid",
+        alignItems: "start",
+        justifyContent: "end",
+        width: "100%",
+        height: toggle ? "300px" : "0px",
+        zIndex: "5",
+        transition: "all 0.1s ease-in",
+        // backgroundColor:"#123123",
+        overflow: "hidden",
+      }}>
+        <div style={{
+          display: "flex",
+          alignItems: "start",
+          justifyContent: "space-arround",
+          backgroundColor: "#fff",
+          border: "1px solid #00000060",
+          padding: "10px",
+          boxShadow: "-1px 1px 10px 1px #00000040",
+          flexDirection: "column",
+          gap: "10px",
+          transition: "all 0.1s ease-in",
+          opacity: toggle ? 1 : 0,
+          // transform: toggle ? "translateX(-0px)" : "translateX(100px)"
+        }}>
+          <div>
+            Status : {props.order.status}
+          </div>
+          {
+            props.order.stat1 ?
+              <div>
+                Expected delivery : {props.order.stat1}
+              </div> : null
+          }
+          {
+            props.order.stat2 ?
+              <div>
+                {props.order.stat2}
+                {/* not yet shipped */}
+              </div> : null
+          }
+          <div>Method of payment : {props.order.method}</div>
+        </div>
+      </div>
       <div style={{
         display: "flex",
         flexDirection: "row"
@@ -26,15 +74,13 @@ export default function OrdersCard(props) {
         <div style={{
           padding: "2px 10px",
           cursor: "pointer",
-          overflow:"hidden"
+          overflow: "hidden",
         }} onClick={() => setToggle(!toggle)}>
           <img style={{
             transform: toggle ? null : "rotate(180deg)"
           }} width="30" height="20" src={showDetails} alt="showStatus" />
         </div>
       </div>
-
-
       <div style={{
         position: "relative",
         overflowX: "auto",
@@ -59,6 +105,7 @@ export default function OrdersCard(props) {
         }
 
       </div>
+
     </div>
   )
 }

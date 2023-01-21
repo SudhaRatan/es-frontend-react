@@ -41,10 +41,10 @@ export default function Orders() {
       // textAlign:"center",
     }}>
       <span style={{
-        textAlign: "center",
-        width: "100vw",
         fontSize: "28px",
         fontWeight: "600",
+        display:"flex",
+        justifyContent:"center",
       }}>
         Your Orders
       </span>
