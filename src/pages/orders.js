@@ -38,13 +38,14 @@ export default function Orders() {
 
   return (
     <div style={{
-      // textAlign:"center",
+      boxSizing: "border-box",
+      display: "grid",
     }}>
       <span style={{
         fontSize: "28px",
         fontWeight: "600",
-        display:"flex",
-        justifyContent:"center",
+        display: "flex",
+        justifyContent: "center",
       }}>
         Your Orders
       </span>
@@ -53,16 +54,19 @@ export default function Orders() {
           <div style={{
             boxSizing: "border-box",
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit,minmax(420px,1fr))",
-            // width: "100vw",
+            gridTemplateColumns: "repeat(auto-fit,minmax(360px,1fr))",
+            justifyContent: "space-evenly",
             gap: "20px",
+            alignItems: "center",
             padding:"20px",
           }}>
             {
               orders.map(order => {
                 return (
                   <div style={{
-                    boxShadow: "2px 2px 10px 1px #80808080",
+                    boxShadow: "0px 0px 10px 1px #80808080",
+                    border: "1px solid #808080",
+                    display:"inline-grid"
                   }} key={order._id}>
                     <OrdersCard order={order} />
                   </div>

@@ -6,7 +6,6 @@ export default function OrdersCard(props) {
 
   const d = new Date(props.order.orderDate)
   const [toggle, setToggle] = useState(false)
-  console.log(props.order)
 
   return (
     <div style={{
@@ -22,7 +21,7 @@ export default function OrdersCard(props) {
         alignItems: "start",
         justifyContent: "end",
         width: "100%",
-        height: toggle ? "300px" : "0px",
+        height: toggle ? "fit-content" : "0px",
         zIndex: "5",
         transition: "all 0.1s ease-in",
         // backgroundColor:"#123123",
@@ -77,7 +76,8 @@ export default function OrdersCard(props) {
           overflow: "hidden",
         }} onClick={() => setToggle(!toggle)}>
           <img style={{
-            transform: toggle ? null : "rotate(180deg)"
+            transform: toggle ? null : "rotate(180deg)",
+            transition: "all 0.2s"
           }} width="30" height="20" src={showDetails} alt="showStatus" />
         </div>
       </div>
