@@ -24,7 +24,7 @@ const ProdCard = (props) => {
       </div>
       <Link to={"../product/" + props.id} className="prod-name">
         <div>{props.name}</div>
-        <div>{props.currency} {props.price}</div>
+        <div>Rs {props.price}</div>
       </Link>
     </div>
   )

@@ -185,19 +185,6 @@ function Sell() {
 								}
 							</select>
 
-							<label className="label">Currency</label>
-							<select
-								className="inp"
-								onChange={handleChange} name="currency">
-								<option disabled selected >Select a currency</option>
-								{
-									Object.keys(currency).map((curr) => {
-										return (
-											<option key={curr} value={currency[curr].symbol}>{currency[curr].name}({curr})-{currency[curr].symbol}</option>
-										)
-									})
-								}
-							</select>
 							<label className="label">Description</label>
 							<textarea
 								placeholder="Product description"
