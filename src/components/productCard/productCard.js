@@ -14,7 +14,7 @@ const ProdCard = (props) => {
       {
         props.src ? (
           <Link to={"../product/" + props.id} className="prod-name">
-          <img height={200} width={150} className="prod-img" src={props.src} alt="Product Imge" />
+          <img height={200} width={200} className="prod-img" src={props.src} alt="Product Imge" />
         </Link>
         ) : (
           <Loading />
