@@ -24,6 +24,7 @@ export default function AddressCard(props) {
       }
     })
   }
+  
   const verifyUser = () => {
     axios
       .get(`${API}/account/verify`)

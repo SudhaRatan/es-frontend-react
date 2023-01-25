@@ -47,7 +47,6 @@ function Cart() {
 							setProds(null)
 							setCart("empty")
 						}
-
 					}
 					else {
 						localStorage.removeItem('token')
@@ -83,7 +82,6 @@ function Cart() {
 				if (res.data.auth) {
 					getProducts()
 				} else {
-
 				}
 			})
 	}

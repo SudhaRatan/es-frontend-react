@@ -56,7 +56,6 @@ export default function SelectPayment() {
     } else {
       setMsg("Please select an option")
     }
-
   }
 
   const verifyUser = () => {
