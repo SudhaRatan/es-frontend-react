@@ -2,7 +2,7 @@ import "./components/homeStyle.css"
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Loading from "./components/loadingAnim";
-import ProdCard from "./components/productCard/productCard";
+import ProdCardB from "./components/productCard/productCardB";
 
 export const API = process.env.REACT_APP_API;
 
@@ -14,8 +14,6 @@ function App() {
   const [elec, setElect] = useState(null)
   const [clothes, setClothes] = useState(null)
   const [rand, setRand] = useState(null)
-  const [featImg, setFeatImg] = useState(null)
-  const [elecImages, setElecImages] = useState(null)
 
   useEffect(() => {
     getFeature()
@@ -30,7 +28,6 @@ function App() {
       .then(res => {
         // console.log(res.data.featProd[0],res.data.imgData.imageData)
         setFeat(res.data.featProd[0])
-        setFeatImg(res.data.imgData.imageData[0])
       })
   }
 
@@ -39,7 +36,6 @@ function App() {
       .get(`${API}/electronicProds`)
       .then((res) => {
         setElect(res.data.prods)
-        setElecImages(res.data.images)
       })
     setClothes(null)
     setRand(null)
@@ -58,7 +54,7 @@ function App() {
     <div className="Home">
       <div className="feat">
         {
-          feat && featImg ? (
+          feat  ? (
             <div style={{
               position: "relative",
               display: "grid",
@@ -74,10 +70,9 @@ function App() {
                 width:"90vw"
                 
               }}>
-                <ProdCard
+                <ProdCardB
                   key={feat._id}
                   id={feat._id}
-                  src={featImg}
                   name={feat.name}
                   currency={feat.currency}
                   price={feat.price}
@@ -96,7 +91,7 @@ function App() {
       <div className="elec">
         <h2 style={{marginBottom:"5px",marginTop:"5px",}}>Electronics Section</h2>
         {
-          elec && elecImages ? (
+          elec  ? (
             <div style={{
               overflowX: "scroll",
               overflowY: "hidden",
@@ -108,10 +103,9 @@ function App() {
               {
                 elec.map(prod => {
                   return (
-                    <ProdCard
+                    <ProdCardB
                       key={prod._id}
                       id={prod._id}
-                      src={elecImages[prod._id]}
                       name={prod.name}
                       currency={prod.currency}
                       price={prod.price}

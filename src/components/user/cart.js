@@ -4,7 +4,7 @@ import st from "../style";
 import { useNavigate } from "react-router-dom"
 import { API } from "../../App";
 import Loading from "../loadingAnim";
-import ProdCard from "../productCard/productCard";
+import ProdCardB from "../productCard/productCardB";
 import "../seller/styles/prods.css"
 import deleteButton from "../images/cross-button.png"
 import Button from "../button";
@@ -19,7 +19,6 @@ function Cart() {
 	const navigate = useNavigate()
 	const [cart, setCart] = useState(null)
 	const [prods, setProds] = useState(null)
-	const [images, setImages] = useState(null)
 	useEffect(() => {
 		if (prods) {
 			// console.log(prods)
@@ -40,8 +39,6 @@ function Cart() {
 							setCart(res.data.message)
 							const ps = res.data.prods.productIds
 							setProds(ps)
-							console.log(res.data.prods,ps)
-							getImages(res.data.prods._id)
 						}
 						else {
 							setProds(null)
@@ -67,13 +64,6 @@ function Cart() {
 			})
 	}
 
-	const getImages = (id) => {
-		axios
-			.get(`${API}/cart/images/${id}`)
-			.then((res) => {
-				setImages(res.data.images)
-			})
-	}
 
 	const handleDelete = (id) => {
 		axios
@@ -113,16 +103,8 @@ function Cart() {
 											<div style={style.cardContainer} key={prod._id}>
 												<div>
 													{
-														images ? <ProdCard
+														<ProdCardB
 															id={prod._id}
-															src={images[prod._id]}
-															name={prod.name}
-															currency={prod.currency}
-															price={prod.price}
-														// small="true"
-														/> : <ProdCard
-															id={prod._id}
-															// src={images[prod._id]}
 															name={prod.name}
 															currency={prod.currency}
 															price={prod.price}

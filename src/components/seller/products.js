@@ -5,7 +5,7 @@ import axios from "axios"
 import Loading from "../loadingAnim"
 import "./styles/prods.css"
 import Button from "../button"
-import ProdCard from "../productCard/productCard"
+import ProdCardB from "../productCard/productCardB"
 
 export default function Products() {
 	axios.defaults.headers.get['x-access-token'] = localStorage.getItem('token')
@@ -15,7 +15,6 @@ export default function Products() {
 	const navigate = useNavigate()
 
 	const [auth, setAuth] = useState(null)
-	const [images, setImages] = useState([])
 	const [prods, setProds] = useState([])
 
 	useEffect(() => {
@@ -27,7 +26,6 @@ export default function Products() {
 					if (res.data.auth) {
 						setAuth(res.data.message)
 						setProds(res.data.prods)
-						setImages(res.data.images)
 						// console.log(images)
 					}
 					else {
@@ -51,28 +49,26 @@ export default function Products() {
 	return (
 		<div className="prod-home"><h1>{auth}</h1>
 			{
-				auth && images ? (
-					<><Button title="Upload a product" color="#666fff" onClick={() => navigate("/sell")} />
+				auth ? (
+					<>
+						<Button title="Upload a product" color="#666fff" onClick={() => navigate("/sell")} />
 						<div className="Prods-cont">
 							{
 								prods.map(prod => {
 									return (
 										<div style={style.cardContainer} key={prod._id}>
-											<ProdCard
+											<ProdCardB
 												id={prod._id}
-												src={images[prod._id]}
 												name={prod.name}
 												currency={prod.currency}
 												price={prod.price}
 											// small="true"
 											/>
-
 										</div>
 									)
 								})
 							}
 						</div>
-
 					</>
 				) : (<Loading />)
 			}
