@@ -6,10 +6,12 @@ import Loading from "../loadingAnim"
 import "./styles/prods.css"
 import Button from "../button"
 import ProdCardB from "../productCard/productCardB"
+import deleteButton from '../../components/images/cross-button.png'
 
 export default function Products() {
 	axios.defaults.headers.get['x-access-token'] = localStorage.getItem('token')
 	axios.defaults.headers.post['x-access-token'] = localStorage.getItem('token')
+	axios.defaults.headers.delete['x-access-token'] = localStorage.getItem('token')
 
 
 	const navigate = useNavigate()
@@ -18,6 +20,11 @@ export default function Products() {
 	const [prods, setProds] = useState([])
 
 	useEffect(() => {
+		getProducts()
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [auth])
+
+	const getProducts = () => {
 		axios
 			.get(`${API}/sell/products`)
 			.then((res) => {
@@ -40,11 +47,22 @@ export default function Products() {
 					setAuth("error")
 					console.log(error)
 				}
-
-
 			})
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [auth])
+	}
+
+	const handleDelete = (id) => {
+		axios
+			.delete(`${API}/sell/product/delete/${id}`)
+			.then(res => {
+				console.log(res.data)
+				if (res.data.auth) {
+					getProducts()
+				} else {
+					alert("Error occured try again")
+				}
+			})
+
+	}
 
 	return (
 		<div className="prod-home"><h1>{auth}</h1>
@@ -64,6 +82,17 @@ export default function Products() {
 												price={prod.price}
 											// small="true"
 											/>
+											<div style={{
+												position: "absolute",
+												zIndex: "5",
+												transform: "translateY(-280px)",
+												margin: "10px",
+												cursor: "pointer",
+											}}
+												onClick={() => handleDelete(prod._id)}
+											>
+												<img width="30" src={deleteButton} alt="Delete" />
+											</div>
 										</div>
 									)
 								})
@@ -78,7 +107,8 @@ export default function Products() {
 
 const style = {
 	cardContainer: {
-		position: "relative"
+		position: "relative",
+		zIndex: "5"
 	},
 	cardOptions: {
 		position: "absolute",
