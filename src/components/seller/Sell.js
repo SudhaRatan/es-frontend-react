@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom"
 import { API } from "../../App";
 import Loading from "../loadingAnim";
 import "./styles/style.css";
-import currency from "../../currency";
 import Button from "../button";
 import Compressor from "compressorjs";
 
@@ -24,6 +23,7 @@ function Sell() {
 
 	const [uploadStat, setUploadStat] = useState(false)
 	const [message, setMessage] = useState(null)
+	const [showLoading, setShowLoading] = useState(false)
 
 	useEffect(() => {
 		axios
@@ -75,6 +75,7 @@ function Sell() {
 	// const [files, setFiles] = useState([])
 	const [results, setResults] = useState([])
 	const [files, setFiles] = useState([])
+	const [fail, setFail] = useState(null)
 
 	const compressFiles = async (e) => {
 		var compFiles = []
@@ -84,7 +85,7 @@ function Sell() {
 				quality: 0.8,
 				success: (compressedResult) => {
 					compFiles.push(compressedResult)
-					console.log("Pushed")
+					// console.log("Pushed")
 					setFiles(compFiles)
 				},
 			});
@@ -92,20 +93,23 @@ function Sell() {
 	}
 
 	const handleF = (e) => {
+		// setShowLoading(true)
 		var temp = []
-		for (let i = 0; i < files.length; i++) {
-			const reader = new FileReader()
-			reader.onloadend = async () => {
-				const res = await reader.result.toString()
-				temp.push(res)
-				setResults(temp)
+		if (files.length > 0) {
+			for (let i = 0; i < files.length; i++) {
+				const reader = new FileReader()
+				reader.onloadend = async () => {
+					const res = await reader.result.toString()
+					temp.push(res)
+					setResults(temp)
+				}
+				reader.readAsDataURL(files[i])
 			}
-			console.log("vwrsv")
-			reader.readAsDataURL(files[i])
+			setUploadStat(true)
+			setMessage(null)
+		} else {
+			setMessage("Upload images")
 		}
-		setUploadStat(true)
-		setMessage(null)
-
 	}
 
 
@@ -121,12 +125,18 @@ function Sell() {
 	const handleUpload = async (e) => {
 		// console.log(post,results)
 		if (uploadStat === true) {
+			setShowLoading(true)
 			axios
 				.post(`${API}/sell/upload`, { post, results })
 				.then(res => {
 					console.log(res.data)
+					if (res.data.auth) {
+						navigate("/products")
+					} else {
+						setFail("Fill all fields")
+					}
+					setShowLoading(false)
 					// console.log(results)
-					navigate("/products")
 				})
 		} else {
 			setMessage("Upload Images")
@@ -140,7 +150,21 @@ function Sell() {
 				auth ? (
 					<div className="contain">
 						<h1 style={{ margin: "20px" }}>{auth}</h1>
-
+						{
+							fail ? <h2 style={{ marginLeft: "20px", color: "red", marginBottom: "10px", }}>{fail}</h2> : null
+						}
+						<div style={{
+							position: "absolute",
+							backgroundColor: "#00000070",
+							width: "100%",
+							height: "100%",
+							display: "flex",
+							justifyContent: "center",
+							alignItems: "center",
+							visibility: showLoading ? "visible" : "hidden",
+						}}>
+							<Loading />
+						</div>
 						<div className="form">
 							<label className="label">Select Brand</label>
 							<input
