@@ -25,7 +25,7 @@ const ProdCardB = (props) => {
   return (
     <div style={{
       display: props.small ? "inline-block" : "",
-      maxWidth: props.small ? "320px" : "",
+      maxWidth: props.small ? "222px" : "",
       backgroundColor: "#ffffff",
     }} className="prod-card">
       <div className="prod-img">
@@ -41,7 +41,10 @@ const ProdCardB = (props) => {
         
       </div>
       <Link to={"../product/" + props.id} className="prod-name">
-        <div>{props.brand} {props.name}</div>
+        <div style={{
+          overflow:"hidden",
+          textOverflow:"ellipsis",
+        }}>{props.brand} {props.name}</div>
         <div>{props.currency} {props.price}</div>
       </Link>
     </div>
