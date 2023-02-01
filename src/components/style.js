@@ -16,7 +16,8 @@ const st = {
     }, nav: {
         backgroundColor: "#202124",
         color: "#fff",
-        verticalAlign: "center"
+        verticalAlign: "center",
+        cursor:"pointer",
     },
     App: {
         textAlign: "center",

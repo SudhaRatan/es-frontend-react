@@ -59,6 +59,7 @@ function Sell() {
 		currency: "",
 		description: "",
 		category: "",
+		subcategory:"",
 	})
 
 	const handleChange = (e) => {
@@ -208,7 +209,15 @@ function Sell() {
 									})
 								}
 							</select>
-
+							<label className="label">Sub category</label>
+							<input
+								placeholder="Enter a sub category"
+								className="inp"
+								type="text"
+								name="subcategory"
+								onChange={handleChange}
+								value={post.subcategory}
+							/>
 							<label className="label">Description</label>
 							<textarea
 								placeholder="Product description"

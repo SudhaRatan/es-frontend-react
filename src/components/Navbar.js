@@ -5,14 +5,38 @@ import { useState } from "react"
 import logo from "./nav-logo.png"
 import searchIcon from '../images/search.png'
 import cross from '../images/cross.png'
+import axios from "axios"
+import { API } from "../App"
 
 function Navb() {
 	const navigate = useNavigate()
 	const [showModal, setShowModal] = useState(false)
 	const [search, setSearch] = useState("")
+	const [result, setResult] = useState(null)
 
 	const modalHandle = () => {
 		setShowModal(!showModal)
+	}
+
+	const searchProds = (product) => {
+		axios
+			.get(`${API}/search/${product}`)
+			.then(res => {
+				// console.log(res.data)
+				if (res.data.length > 0) {
+					setResult(res.data)
+				} else {
+					setResult(null)
+				}
+			})
+			.catch(error => {
+				setResult(null)
+				// console.log(error)
+			})
+	}
+
+	const mat = (arr) => {
+
 	}
 
 	return (
@@ -40,7 +64,6 @@ function Navb() {
 					}}>
 						<input
 							style={{
-								width: "100%",
 								height: "30px",
 								backgroundColor: "#00000000",
 								color: "#fff",
@@ -52,13 +75,13 @@ function Navb() {
 							}}
 							placeholder="Search products"
 							type="text"
-							onChange={(event)=>{setSearch(event.target.value);console.log(event.target.value)}}
+							onChange={(event) => { setSearch(event.target.value); searchProds(event.target.value) }}
 							value={search}
 						/>
 						{
 							search &&
-							<div onClick={()=>setSearch("")} >
-								<img style={{ filter: "invert(1)", marginRight: "3px",cursor:"pointer", }} width={20} height={20} src={cross} alt='search' />
+							<div onClick={() => { setSearch(""); setResult(null) }} >
+								<img style={{ filter: "invert(1)", marginRight: "3px", cursor: "pointer", }} width={20} height={20} src={cross} alt='search' />
 							</div>
 						}
 					</div>
@@ -95,12 +118,58 @@ function Navb() {
 									<li onClick={() => { setShowModal(false); navigate("/login"); }} className="nav-link">Login</li>
 								)
 							}
-
 						</ul>
 					</div>
 				) : (null)
 			}
-
+			{
+				result &&
+				<div style={{
+					color: "#ffffef",
+					marginTop: "60px",
+					position: "absolute",
+					zIndex: "5",
+					width: "100%",
+					textAlign: "left",
+					display: "grid",
+					justifyContent: "center",
+					alignItems: "center",
+					padding: "20px",
+					paddingTop: "0px",
+				}}>
+					<div style={{
+						// width:"fit-content",
+						backgroundColor: "#202124",
+						width: "90vw",
+						padding: "10px",
+						maxHeight: "200px",
+						overflow: "auto"
+					}}>
+						{
+							result.map((res,index) => {
+								return (
+									<div key={index} style={{
+										padding: "0.5rem",
+										borderBottom: "1px solid #989898"
+									}}>
+										{
+											res.name.split(' ').map((arry) => {
+												const reg = new RegExp(search, 'i')
+												if (arry.match(reg)) {
+													return arry+" "
+												}else{
+													{/* console.log(res.name) */}
+													{/* return res.name */}
+												}
+											})
+										}
+									</div>
+								)
+							})
+						}
+					</div>
+				</div>
+			}
 
 		</div>
 	);
