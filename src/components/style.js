@@ -4,25 +4,21 @@ const st = {
         width: "100%",
     },
     navbar: {
-        zIndex:"17",
-        // cursor: "pointer",
+        zIndex: "17",
+        backgroundColor: "#202124",
         textAlign: "center",
         display: "grid",
         margin: "auto",
-        height:"60px",
-        gridTemplateColumns: "3fr 8fr 2fr",
+        height: "60px",
+        gridTemplateColumns: "100px 1fr 50px",
         position: "fixed",
         width: "100%",
-        // zIndex:"10",
     }, nav: {
         backgroundColor: "#202124",
         color: "#fff",
-        // padding: "10px 0",
-        veerticalAlign:"center"
+        verticalAlign: "center"
     },
-    nav_link:{
-        cursor:"pointer",
-    }, App: {
+    App: {
         textAlign: "center",
         fontSize: "40px"
     }, btn: {
@@ -33,7 +29,7 @@ const st = {
         color: "white",
         borderRadius: "5px",
         boxShadow: "0px 0px 10px 2px #666fff",
-        cursor:"pointer",
+        cursor: "pointer",
     }, btn1: {
         width: "100%",
         backgroundColor: "#FB641B",
@@ -42,7 +38,7 @@ const st = {
         color: "white",
         borderRadius: "5px",
         boxShadow: "0px 0px 10px 2px #FB641B",
-        cursor:"pointer",
+        cursor: "pointer",
     }, inp: {
         height: "40px",
         padding: " 5px 10px",
@@ -87,14 +83,14 @@ const st = {
         margin: "auto",
         // backgroundColor:"black",
         justifyContent: "center",
-        maxWidth:"80vw",
+        maxWidth: "80vw",
     },
-    in:{
-        textAlign:"start",
+    in: {
+        textAlign: "start",
     },
-    labeltxt:{
-        fontSize:"18px",
-        fontWeight:"bold",
+    labeltxt: {
+        fontSize: "18px",
+        fontWeight: "bold",
     }
 }
 export default st
