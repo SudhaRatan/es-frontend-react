@@ -18,7 +18,7 @@ function Navb() {
 		setShowModal(!showModal)
 	}
 
-	const searchProds = (product) => {
+	const searchProds123 = (product) => {
 		axios
 			.get(`${API}/search/${product}`)
 			.then(res => {
@@ -35,9 +35,14 @@ function Navb() {
 			})
 	}
 
-	const mat = (arr) => {
-
+const handleSearch = (event) => {
+	if (event.key === 'Enter'){
 	}
+}
+
+const searchProds = () => {
+	navigate(`search/${search}`)
+}
 
 	return (
 		<div style={st.cont}>
@@ -73,9 +78,10 @@ function Navb() {
 								border: "none",
 								outline: "none"
 							}}
+							onKeyDown={handleSearch}
 							placeholder="Search products"
 							type="text"
-							onChange={(event) => { setSearch(event.target.value); searchProds(event.target.value) }}
+							onChange={(event) => { setSearch(event.target.value) }}
 							value={search}
 						/>
 						{
@@ -122,55 +128,6 @@ function Navb() {
 					</div>
 				) : (null)
 			}
-			{
-				result &&
-				<div style={{
-					color: "#ffffef",
-					marginTop: "60px",
-					position: "absolute",
-					zIndex: "5",
-					width: "100%",
-					textAlign: "left",
-					display: "grid",
-					justifyContent: "center",
-					alignItems: "center",
-					padding: "20px",
-					paddingTop: "0px",
-				}}>
-					<div style={{
-						// width:"fit-content",
-						backgroundColor: "#202124",
-						width: "90vw",
-						padding: "10px",
-						maxHeight: "200px",
-						overflow: "auto"
-					}}>
-						{
-							result.map((res,index) => {
-								return (
-									<div key={index} style={{
-										padding: "0.5rem",
-										borderBottom: "1px solid #989898"
-									}}>
-										{
-											res.name.split(' ').map((arry) => {
-												const reg = new RegExp(search, 'i')
-												if (arry.match(reg)) {
-													return arry+" "
-												}else{
-													{/* console.log(res.name) */}
-													{/* return res.name */}
-												}
-											})
-										}
-									</div>
-								)
-							})
-						}
-					</div>
-				</div>
-			}
-
 		</div>
 	);
 }
