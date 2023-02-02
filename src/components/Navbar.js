@@ -5,38 +5,20 @@ import { useState } from "react"
 import logo from "./nav-logo.png"
 import searchIcon from '../images/search.png'
 import cross from '../images/cross.png'
-import axios from "axios"
-import { API } from "../App"
 
 function Navb() {
 	const navigate = useNavigate()
 	const [showModal, setShowModal] = useState(false)
 	const [search, setSearch] = useState("")
-	const [result, setResult] = useState(null)
 
 	const modalHandle = () => {
 		setShowModal(!showModal)
 	}
 
-	const searchProds123 = (product) => {
-		axios
-			.get(`${API}/search/${product}`)
-			.then(res => {
-				// console.log(res.data)
-				if (res.data.length > 0) {
-					setResult(res.data)
-				} else {
-					setResult(null)
-				}
-			})
-			.catch(error => {
-				setResult(null)
-				// console.log(error)
-			})
-	}
 
 const handleSearch = (event) => {
-	if (event.key === 'Enter'){
+	if (event.key === 'Enter' && search !== "" && search != null){
+		searchProds()
 	}
 }
 
@@ -86,7 +68,7 @@ const searchProds = () => {
 						/>
 						{
 							search &&
-							<div onClick={() => { setSearch(""); setResult(null) }} >
+							<div onClick={() => { setSearch(""); }} >
 								<img style={{ filter: "invert(1)", marginRight: "3px", cursor: "pointer", }} width={20} height={20} src={cross} alt='search' />
 							</div>
 						}

@@ -20,6 +20,7 @@ import Buy from './pages/Buy';
 import SelectAddress from './components/buy/selectAddress';
 import SelectPayment from "./components/buy/selectPayment";
 import Orders from './pages/orders';
+import Search from './pages/search';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -32,6 +33,7 @@ root.render(
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/cart' element={<Cart />} />
+        <Route path='/search/:product' element={<Search />} />
         <Route path='/secret' element={<Admin />} />
         <Route path='/account' element={<Account />} />
         <Route path='/account/addAddress' element={<AddressForm />} />

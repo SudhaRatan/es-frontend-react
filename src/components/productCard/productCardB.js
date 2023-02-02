@@ -45,7 +45,7 @@ const ProdCardB = (props) => {
           overflow:"hidden",
           textOverflow:"ellipsis",
         }}>{props.brand} {props.name}</div>
-        <div>{props.currency} {props.price}</div>
+        <div>Rs {props.price}</div>
       </Link>
     </div>
   )
