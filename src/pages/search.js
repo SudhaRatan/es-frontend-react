@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import axios from "axios";
 import { API } from "../App";
 import ProdCardB from "../components/productCard/productCardB";
 import Loading from "../components/loadingAnim";
+import { useParams } from "react-router-dom";
 
 const Search = () => {
   const { product } = useParams()
